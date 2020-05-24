@@ -1,106 +1,106 @@
 <template>
     <div class="demo1">
-    <div class="zhanshi">
-        <div class="tixi" v-if=" filtrate=='' ">暂无数据！</div>
-        <ul class="list">
-            <li v-for="itme in filtrate" :key="itme">
-                <div class="content-1">
+        <div class="zhanshi">
+            <div class="tixi" v-if=" filtrate=='' ">暂无数据！</div>
+            <ul class="list">
+                <li v-for="itme in filtrate" :key="itme">
+                    <div class="content-1">
 
-                    <h5 class="list-title">
-                        <span>【{{itme.creation}}】</span>
-                        <a href="/article1">{{itme.title}}</a>
-                    </h5>
+                        <h5 class="list-title">
+                            <span>【原创】</span>
+                            <a href="/article1">{{itme.title}}</a>
+                        </h5>
 
-                    <div class="tome">
-                        <span>{{itme.time.slice(8,10)}}</span>
-                        <span>{{itme.time.slice(5,7)}}</span>
-                        <span>{{itme.time.slice(0,4)}}</span>
-                    </div>
+                        <div class="tome">
+                            <span>{{itme.time.slice(8,10)}}</span>
+                            <span>{{itme.time.slice(5,7)}}</span>
+                            <span>{{itme.time.slice(0,4)}}</span>
+                        </div>
 
-                    <div class="content">
-                        <a :href="itme.path">
-                            <img :src="itme.img_path">
-                        </a>
-                        <span>
+                        <div class="content">
+                            <a :href="itme.path">
+                                <img :src="itme.img_path">
+                            </a>
+                            <span>
                             {{itme.content}}
                         </span>
-                    </div>
+                        </div>
 
-                    <div class="read-more">
+                        <div class="read-more">
+                            <div></div>
+                            <a :href="itme.path">立即阅读</a>
+                        </div>
                         <div></div>
-                        <a :href="itme.path">立即阅读</a>
                     </div>
-                    <div></div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
 
 
-<!--        右侧导航栏-->
+            <!--        右侧导航栏-->
 
-        <div class="daohanglan">
+            <div class="daohanglan">
 
-            <div class="doahang1">
+                <div class="doahang1">
 
-                <div class="doahang-tlter">
+                    <div class="doahang-tlter">
 
-                    <label>
-                        <input type="text" placeholder="请输入搜索关键字" v-model="shou" @keyup.13="guolu">
-                        <span class="iconfont" v-on:click=" guolu">&#xe600;</span>
-                    </label>
-                    <ul>
-
-                    </ul>
-                </div>
-
-                <ul class="daohang-list">
-                    <li @click="quanbu">
-                        <a>全部文章</a>
-                    </li>
-
-                    <li @click="ceshi">
-                        <a> 网站测试</a>
-                    </li>
-
-                    <li @click="kaifa">
-                        <a>网站开发</a>
-                    </li>
-
-                    <li @click="xitong">
-                        <a>操作系统</a>
-                    </li>
-
-                    <li @click="xuexi">
-                        <a>深度学习</a>
-                    </li>
-
-                    <li @click="suanfa">
-                        <a >程序算法</a>
-                    </li>
-
-                    <li @click="qita">
-                        <a >其他</a>
-                    </li>
-                </ul>
-
-
-                <div class="daohang2">
-                    <h5>热门文章</h5>
-                    <div>
+                        <label>
+                            <input type="text" placeholder="请输入搜索关键字" v-model="shou" @keyup.13="guolu">
+                            <span class="iconfont" v-on:click=" guolu">&#xe600;</span>
+                        </label>
                         <ul>
-                            <li v-for="(itme,index) in hot" :key="(itme,ndex)">
-                                <a :href="itme.path"><span>{{index+1}}. </span>{{itme.title}}</a>
-                            </li>
 
                         </ul>
                     </div>
+
+                    <ul class="daohang-list">
+                        <li @click="quanbu">
+                            <a>全部文章</a>
+                        </li>
+
+                        <li @click="ceshi">
+                            <a> 网站测试</a>
+                        </li>
+
+                        <li @click="kaifa">
+                            <a>网站开发</a>
+                        </li>
+
+                        <li @click="xitong">
+                            <a>操作系统</a>
+                        </li>
+
+                        <li @click="xuexi">
+                            <a>深度学习</a>
+                        </li>
+
+                        <li @click="suanfa">
+                            <a >程序算法</a>
+                        </li>
+
+                        <li @click="qita">
+                            <a >其他</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="daohang2">
+                        <h5>热门文章</h5>
+                        <div>
+                            <ul>
+                                <li v-for="(itme,index) in hot" :key="(itme,ndex)">
+                                    <a :href="itme.path"><span>{{index+1}}. </span>{{itme.title}}</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
-
-
-
-    </div>
     </div>
 
 
@@ -115,17 +115,17 @@
         created() {
             var that=this;
             axios.get('/home/article')
-            .then(function (res) {
-                that.mydata=res.data;
-                that.filtrate=that.mydata
+                .then(function (res) {
+                    that.mydata=res.data;
+                    that.filtrate=that.mydata
 
-            })
-            .catch(function (err) {
-                console.log(err)
+                })
+                .catch(function (err) {
+                    console.log(err)
 
-            });
+                });
 
-            axios.get('/home/article/hot')
+            axios.get('home/article/hot')
                 .then(function (res) {
                     that.hot=res.data;
                     console.log(that.hot)
@@ -299,7 +299,7 @@
         justify-content: flex-end;
         flex-direction: column-reverse;
         align-items: center;
-        width: 960px;
+        max-width: 960px;
         height: 100%;
     }
 

@@ -299,7 +299,7 @@
         justify-content: flex-end;
         flex-direction: column-reverse;
         align-items: center;
-        width: 960px;
+        max-width: 960px;
         height: 100%;
     }
 

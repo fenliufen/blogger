@@ -214,7 +214,7 @@
     .head-img img{
         position: absolute;
         display: block;
-        width: 900px;
+        max-width: 900px;
         height: 240px;
         left: 30px;
         top: 20px;
