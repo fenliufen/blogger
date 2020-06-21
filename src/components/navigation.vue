@@ -1,38 +1,35 @@
 <template>
     <div class="titer">
         <div class="libiao">
+
             <div class="hang">
                 <a>从小就疯了</a>
             </div>
 
+
             <div>
                 <ul class="daohang">
 
-                    <li>
-                        <a href="./about">关于我</a>
-                    </li>
-
-                    <li>
-                        <a href="./journal">日志文章</a>
-                    </li>
-
-
-                    <li>
-                        <a href="./dynamic">动态</a>
-                    </li>
-
-                    <li>
-                        <a href="./home">首页</a>
+                    <li v-for="(itme,index) in mydata" :key="(itme,index)" @click="dian(index)" :class="{'list_01':i===index}" class="mylist-01">
+                        <router-link :to="itme.path">{{itme.name}}</router-link>
                     </li>
 
                 </ul>
             </div>
 
+
+
+
+
             <a class="dengru" href="tencent://message/?Menu=yes&uin=1607187254&Site=80fans&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a545b1714f9d45">
                 <i class="iconfont">&#xe601;</i>
             </a>
-
         </div>
+
+
+
+
+
     </div>
 
 </template>
@@ -40,23 +37,84 @@
 <script>
     export default {
         name: "navigation",
+        methods:{
+            dian:function (index) {
+                this.i=index
+
+            },
+
+            but:function () {
+                if(this.ispan==true){
+                    this.ispan=false;
+                }else{
+                    this.ispan=true
+                }
+            }
+
+        },
+
         mounted() {
-            // let list=document.querySelectorAll('.daohang li a');
-            // console.log(list)
-            // list.forEach(function (item) {
-            //     item.style.color='black'
-            // });
+
+            function monitoring() {
+                var width = window.innerWidth;
+                if (width < 800) {
+                    this.ispan=true
+                }
+
+            }
+
+            monitoring();
+            window.onresize = function() {
+                monitoring()
+            }
 
 
 
-        }
+
+        },
+
+
+        data(){
+            return{
+                mydata:[
+                    {
+                        name:'首页',
+                        path:'./home'
+                    },
+                    {
+                        name:'日志文章',
+                        path:'./journal'
+                    },
+                    {
+                        name:'动态',
+                        path:'./dynamic'
+                    },
+                    {
+                        name:'关于我',
+                        path:'./about'
+                    },
+                    {
+                        name:'友情链接',
+                        path:'./friendship'
+                    },
+                ],
+
+                ispan:false,
+                i:'',
+
+
+            }
+        },
+
+
+
 
     }
 
 
 </script>
 
-<style scoped>
+<style scoped >
     .titer {
         width: 100%;
         min-height: 60px;
@@ -68,6 +126,8 @@
         left: 0;
         border-bottom: 1px solid #e8e9e7;
         font-size: 14px;
+
+
     }
 
     .libiao {
@@ -80,6 +140,10 @@
 
     .hang {
         position: relative;
+        display: block;
+        width: 140px;
+        margin-left: -200px;
+
     }
 
     .hang a:nth-of-type(1) {
@@ -89,19 +153,20 @@
         line-height: 60px;
         text-align: center;
         position: absolute;
-        left: 0;
+
     }
 
     .daohang li {
         display: block;
-        float: right;
+        float: left;
         margin: 10px 10px;
         position: relative;
     }
 
-    .daohang li:nth-of-type(1) {
-        margin-right: 250px;
+    .list_01{
+        border-bottom:3px solid green ;
     }
+
 
     .daohang li a {
         display: block;
@@ -109,18 +174,22 @@
         padding: 4px 28px;
         color: #212220;
         font-weight: 400;
-        font-size: 15px;
+        font-size: 16px;
         text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
         -webkit-transition: all .2s;
         transition: all .2s;
         text-decoration: none;
         outline: none;
+
     }
 
-    .daohang li a:hover {
+    .daohang li a:hover{
         color: blue;
         font-weight: bold;
     }
+
+
+
 
     .dengru {
         right: 0;
@@ -139,6 +208,26 @@
     .dengru i:hover {
         color: pink;
     }
+
+
+    @media screen and (max-width: 800px){
+
+        .dengru{
+            display: none;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

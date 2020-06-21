@@ -2,15 +2,15 @@
 
         <div class="div-list">
                 <ul class="list_01">
-                        <li v-for="(itme,index) in mydata" :key="(itme,index)">
+                        <li v-for="(itme,index) in mydata" :key="(itme,index)" >
+                                <div class="div-list">
                                 <div :class="index%2==0?myclass1:myclass2">
                                         <span class="time">{{itme.time}}</span>
 
                                         <div class="neir">
                                                 <p>{{itme.content}}</p>
                                         </div>
-
-
+                                </div>
                                 </div>
 
                                 <i class="iconfont"></i>
@@ -34,7 +34,6 @@
                     axios.get('/dynamic/content')
                     .then(function (res) {
                              that.mydata=res.data
-                              console.log(that.mydata)
 
                     })
                     .catch(function (err) {
@@ -75,20 +74,20 @@
 <style scoped>
 
         .div-list{
-                margin-top: 64px;
+                max-width: 900px;
+                margin: 64px auto;
                 overflow: auto;
                 overflow-y: hidden;
                 overflow-x: hidden;
                 scrollbar-width: none;
                 padding-bottom: 10px;
 
+
         }
 
         .list_01{
-
                 box-sizing: border-box;
                 list-style-type: none;
-                position: relative;
                 width: 6px;
                 margin: 0 auto;
                 padding-top: 50px;
@@ -102,20 +101,25 @@
                 list-style-type: none;
                 position: relative;
                 width: 6px;
-                height: 200px;
+                min-height: 200px;
                 margin: 0 auto;
                 padding-top: 50px;
                 background: #fff;
         }
 
+        .div-list{
+                max-width: 900px;
+
+        }
+
         .liuyan{
 
-                position: absolute;
-                width: 400px;
-                height: 140px;
-                box-shadow: 0 0 100px inset aliceblue;
-                left: 20px;
-                top: 15px;
+                 position: absolute;
+                 width: 400px;
+                 min-height: 140px;
+                 box-shadow: 0 0 100px inset aliceblue;
+                 left: 20px;
+                 top: 15px;
                 background: aliceblue;
                 border-radius: 3px;
         }
@@ -123,7 +127,7 @@
         .liuyan1{
                 position: absolute;
                 width: 400px;
-                height: 140px;
+                min-height: 140px;
                 box-shadow: 0 0 100px inset aliceblue;
                 background: aliceblue;
                 right: 20px;
@@ -146,7 +150,7 @@
         .neir{
                 text-align: center;
                 width: 360px;
-                height: 100px;
+                min-height: 100px;
                 box-shadow: 0 0 100px inset white;
                 margin: 20px auto;
                 background: palegreen;
@@ -171,6 +175,7 @@
                 z-index: 21;
                 background: blue;
         }
+
 
 
 

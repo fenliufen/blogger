@@ -20,8 +20,11 @@
                         <input type="text" placeholder="邮箱(必填)"  v-model="mailbox">
                         <input type="text" placeholder="网址(选填)"  v-model="weburl">
                     </div>
-                    <textarea class="test_02" placeholder="写点什么..."  v-model="content"></textarea>
-                    <button class="but" v-on:click="add">提交</button>
+
+                    <div class="test_show">
+                        <textarea class="test_02" placeholder="写点什么..."  v-model="content"></textarea>
+                        <button class="but" v-on:click="add">提交</button>
+                    </div>
 
             </div>
 
@@ -30,13 +33,13 @@
             <div class="comment-list">
                 <h3>
                     <i class="iconfont">&#xe619;</i>
-                    第{{mydata.length}}个小伙伴参与留言
+                    已经有{{mydata.length}}小伙伴参与留言
                 </h3>
                 <ul class="list_show">
-                    <li v-for="itme in mydata" :key="itme">
+                    <li v-for="(itme,index) in mydata" :key="(itme,index)">
                         <p>
                             <a class="username">
-                                <i class="iconfont">&#xe601;</i>
+                                <i class="iconfont">&#xe689;</i>
                                 {{itme.name}}
                             </a>
                             <span class="time">{{itme.time}}</span>
@@ -85,7 +88,6 @@
             axios.get('/message/liuyan')
             .then(function (res) {
                 tath.mydata=res.data;
-                console.log(tath.mydata)
 
             })
             .catch(function (err) {
@@ -232,37 +234,61 @@
         margin-top:30px ;
         background: #fff;
 
+
     }
 
     .liuyan_01 .test_01{
         display: flex;
-        max-width: 900px;
-        margin-left:62px ;
-        margin-top: 20px;
+        margin:20px auto;
+        max-width: 730px;
+
     }
 
     .liuyan_01 .test_01 input{
         display:block;
         border: 1px solid rgba(0,0,0, .1);
-        width: 260px;
-        height: 40px;
+        width: 34%;
+        min-height: 40px;
         margin-left: 10px;
         text-indent: 1em;
         font-size: 15px;
+        margin-right: 2px;
+
     }
 
+    .liuyan_01 .test_01 input:focus{
+        border: 1px solid red;
+
+    }
+
+
+
+    .test_show{
+        max-width: 730px;
+        margin: 0 auto;
+    }
+
+
+
     .test_02{
-        width: 764px;
-        height: 80px;
+        width: 716px;
+        min-height: 80px;
+        text-indent: 1em;
+        outline:none;
+        resize:none;
         border: 1px solid rgba(0,0,0, .1);
-        margin-top: 20px;
-        padding: 20px;
-        margin-left: 72px;
-        margin-bottom: 5px;
         color: inherit;
         font-family: inherit;
         font-size: inherit;
+        padding-top: 50px;
+        margin-left: 8px;
+
     }
+
+    .test_02:focus{
+        border: 1px solid red;
+    }
+
 
     .but{
         display: block;
@@ -272,9 +298,8 @@
         color: #fff;
         border-radius: 2px;
         text-transform: none;
-        float: right;
-        margin-right:90px ;
         margin-top: 20px;
+        float: right;
     }
 
 
@@ -286,6 +311,8 @@
         max-width: 960px;
         background: #fff;
         border: 1px dashed #ccc;
+        word-wrap:break-word;
+        word-break:break-all;
     }
 
     .comment-list h3{
@@ -313,6 +340,8 @@
 
     .comment-list ul li p{
         text-indent: 1em;
+        word-wrap:break-word;
+        word-break:break-all;
     }
 
     .list_show li p a{
@@ -323,11 +352,10 @@
 
     .list_show li p a i{
         font-family: "iconfont" !important;
-        font-size: 16px;
+        font-size: 20px;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-
     }
 
     .list_show li p .time{

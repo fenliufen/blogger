@@ -7,8 +7,8 @@
                     <div class="content-1">
 
                         <h5 class="list-title">
-                            <span>【原创】</span>
-                            <a href="/article1">{{itme.title}}</a>
+                            <span>【{{itme.creation}}】</span>
+                            <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">{{itme.title}}</a>
                         </h5>
 
                         <div class="tome">
@@ -18,19 +18,25 @@
                         </div>
 
                         <div class="content">
-                            <a :href="itme.path">
+                            <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">
                                 <img :src="itme.img_path">
                             </a>
+
                             <span>
                             {{itme.content}}
-                        </span>
+                           </span>
                         </div>
 
                         <div class="read-more">
                             <div></div>
-                            <a :href="itme.path">立即阅读</a>
+                            <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">立即阅读</a>
                         </div>
-                        <div></div>
+
+                        <div class="yeqian">
+                            <a class="iconfont1"><i class="iconfont">&#xe639;</i>{{itme.classify}}</a>
+                            <a class="iconfont1"><i class="iconfont"></i></a>
+                        </div>
+
                     </div>
                 </li>
             </ul>
@@ -54,32 +60,8 @@
                     </div>
 
                     <ul class="daohang-list">
-                        <li @click="quanbu">
-                            <a>全部文章</a>
-                        </li>
-
-                        <li @click="ceshi">
-                            <a> 网站测试</a>
-                        </li>
-
-                        <li @click="kaifa">
-                            <a>网站开发</a>
-                        </li>
-
-                        <li @click="xitong">
-                            <a>操作系统</a>
-                        </li>
-
-                        <li @click="xuexi">
-                            <a>深度学习</a>
-                        </li>
-
-                        <li @click="suanfa">
-                            <a >程序算法</a>
-                        </li>
-
-                        <li @click="qita">
-                            <a >其他</a>
+                        <li v-for="(itme,index) in navigation " :key="(itme,index)" @click="screening(index)" :class="{'test':i===index}">
+                            <a>{{itme}}</a>
                         </li>
                     </ul>
 
@@ -89,7 +71,7 @@
                         <div>
                             <ul>
                                 <li v-for="(itme,index) in hot" :key="(itme,ndex)">
-                                    <a :href="itme.path"><span>{{index+1}}. </span>{{itme.title}}</a>
+                                    <a :href="itme.path" :target="itme.creation=='转载'?'creation':''"><span>{{index+1}}. </span>{{itme.title}}</a>
                                 </li>
 
                             </ul>
@@ -125,10 +107,10 @@
 
                 });
 
+
             axios.get('/journal/article/hot')
                 .then(function (res) {
                     that.hot=res.data;
-                    console.log(that.hot)
 
                 })
                 .catch(function (err) {
@@ -141,80 +123,83 @@
             guolu: function guolu() {
                 var _this = this;
 
-                if (this.shou == '') {
-                    alert('请输入查询内容');
-                }
+                // if (this.shou == '') {
+                //     alert('请输入查询内容');
+                // }
 
                 this.filtrate = this.mydata.filter(function(item) {
                     return item.title.includes((_this.shou).trim()) || item.classify.includes((_this.shou).trim());
                 });
-                console.log(this.filtrate);
-                this.shou = '';
+
+                // this.shou = '';
             },
 
-            quanbu: function quanbu() {
-                return this.filtrate = this.mydata;
+            screening:function screening(index){
+                var arr=[];
+                this.i=index;
+                if(index==0){
+                    return this.filtrate = this.mydata;
+                }
+
+                if (index==1){
+
+                    this.mydata.forEach(function(itme) {
+                        if (itme.classify === '网站测试') {
+                            arr.push(itme);
+                        }
+                    });
+                    return this.filtrate = arr;
+                }
+
+                if (index==2){
+                    this.mydata.forEach(function(itme) {
+                        if (itme.classify === '网站开发') {
+                            arr.push(itme);
+                        }
+                    });
+                    return this.filtrate = arr;
+
+                }
+
+                if (index==3){
+                    this.mydata.forEach(function(itme) {
+                        if (itme.classify === '操作系统') {
+                            arr.push(itme);
+                        }
+                    });
+                    return  this.filtrate = arr;
+
+                }
+
+                if (index==4){
+                    this.mydata.forEach(function(itme) {
+                        if (itme.classify === '深度学习') {
+                            arr.push(itme);
+                        }
+                    });
+                    return this.filtrate = arr;
+                }
+                if (index==5){
+                    this.mydata.forEach(function(itme) {
+                        if (itme.classify === '程序算法') {
+                            arr.push(itme);
+                        }
+                    });
+                    return  this.filtrate = arr;
+
+                }
+
+                if (index==6){
+                    this.mydata.forEach(function(itme) {
+                        if (itme.classify === '其他') {
+                            arr.push(itme);
+                        }
+                    });
+                    return this.filtrate = arr;
+
+                }
             },
 
-            ceshi: function ceshi() {
-                var arr = [];
-                this.mydata.forEach(function(itme) {
-                    if (itme.classify === '网站测试') {
-                        arr.push(itme);
-                    }
-                });
-                this.filtrate = arr;
-            },
-
-            kaifa: function kaifa() {
-                var arr = [];
-                this.mydata.forEach(function(itme) {
-                    if (itme.classify === '网站开发') {
-                        arr.push(itme);
-                    }
-                });
-                this.filtrate = arr;
-            },
-
-            xitong: function xitong() {
-                var arr = [];
-                this.mydata.forEach(function(itme) {
-                    if (itme.classify === '操作系统') {
-                        arr.push(itme);
-                    }
-                });
-                this.filtrate = arr;
-            },
-
-            xuexi: function xuexi() {
-                var arr = [];
-                this.mydata.forEach(function(itme) {
-                    if (itme.classify === '深度学习') {
-                        arr.push(itme);
-                    }
-                });
-                this.filtrate = arr;
-            },
-
-            suanfa: function suanfa() {
-                var arr = [];
-                this.mydata.forEach(function(itme) {
-                    if (itme.classify === '程序算法') {
-                        arr.push(itme);
-                    }
-                });
-                this.filtrate = arr;
-            },
-
-            qita: function qita() {
-                var arr = [];
-                this.mydata.forEach(function(itme) {
-                    if (itme.classify === '其他') {
-                        arr.push(itme);
-                    }
-                });
-                this.filtrate = arr;
-            }
 
 
 
@@ -253,6 +238,10 @@
                 hot:[],
                 shou:'',
                 filtrate:[],
+                navigation:[
+                    '全部文章','网站测试','网站开发','操作系统','深度学习','程序算法','其他'
+                ],
+                i:'',
 
 
             }
@@ -433,6 +422,28 @@
     }
 
 
+    /*页签*/
+
+    .yeqian{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .iconfont1{
+        color: #279c63;
+        font-size: 12px;
+    }
+
+
+
+    .iconfont1  i{
+        color: #279c63;
+        font-size: 12px;
+        padding-right:6px;
+    }
+
+
+
     /*导航栏样式*/
 
 
@@ -527,6 +538,10 @@
         line-height: 40px;
         position: relative;
         z-index: 1;
+    }
+
+    .test{
+        border-left: 5px solid blue;
     }
 
     .daohang-list li a {
