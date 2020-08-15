@@ -8,13 +8,17 @@
                     <span>观看群众：20</span>
                     <span>分类：网站测试</span>
                     <span>更新时间：2020年05月24日</span>
+
                 </p>
+
 
                 <div class="tome">
                     <span>24</span>
                     <span>05</span>
                     <span>2020</span>
                 </div>
+
+
 
             </div>
 
@@ -148,48 +152,41 @@
                     </li>
                 </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <div class="tsxi-01">
-                    <a href="javascript:history.go(-1)"><span>友情提示:</span>本章已看完，点击返回文章首页哦</a>
+                <div class="title">
+                    <p>
+                        <a href="javascript:history.go(-1)">返回上一步</a> >
+                        <a href="/journal">日志文章</a>
+                    </p>
 
                 </div>
 
+
             </div>
 
-        </div>
+            <message></message>
 
+        </div>
     </div>
 </template>
 
 <script>
+    import message from "../../../components/message";
     export default {
-        name: "index"
+        name: "index",
+        components: {
+            message
+        },
+
     }
 </script>
 
 <style scoped>
     .demo1 {
-        position: relative;
         padding-top: 80px;
         max-width: 1280px;
+        padding-right: 20px;
+        padding-left: 20px;
         margin:90px auto;
-        left: auto;
-        right: auto;
         background: #fff;
         border: 1px solid #cccccc;
         height: 100%;
@@ -206,6 +203,7 @@
 
     .titer-01 {
         position: relative;
+        display: block;
         max-width: 1280px;
         min-height: 85px;
         margin: auto;
@@ -275,7 +273,7 @@
     /*文章展示区*/
 
     .zhanshi-01 {
-        max-width: 1280px;
+        max-width: 100%;
         background: #fff;
         margin: 0;
     }
@@ -304,7 +302,7 @@
 
     .titer-01 .tome {
         font-family: SourceCodeProRegular, Menlo, Monaco, Consolas, "Courier New", monospace, 'Helvetica Neue', Arial, sans-serif;
-        position: absolute;
+        /*position: absolute;*/
         right: 0px;
         top: 10px;
         background-color: #fff;
@@ -341,7 +339,6 @@
     .zhanshi-01 h1 {
         padding-bottom: .3em;
         border-bottom: 1px solid #eee;
-        position: relative;
         margin-top: 1em;
         margin-bottom: 16px;
         font-weight: 700;
@@ -370,46 +367,24 @@
     }
 
     .list-01 li {
-        position: relative;
         box-sizing: border-box;
     }
 
 
 
-
-
-
-
-
-    /*友情提示  */
-    .tsxi-01 {
+    .title{
+        padding: 10px;
         max-width: 1280px;
-        min-height: 100px;
-        border-top: 1px solid #cccccc;
-        background: #fff;
-        margin-top: 100px;
+        margin: 10px auto 0;
+        background-color:;
+        /*box-shadow: 1px 2px 6px rgba(63,74,105,.16);*/
+        /*border-radius: 3px;*/
     }
 
-    .tsxi-01 a {
-        color: #333333;
-        font-size: 30px;
-        line-height: 100px;
-        padding-left: 1em;
-    }
+    .title p a{
+        color: #555;
+        text-decoration: none;
 
-    .tsxi-01 a:hover {
-        font-weight: bold;
-        color: red;
     }
-
-    .list-03 li p {
-        padding-left: 20px;
-    }
-
-    .list-03 li p img {
-        width: 700px;
-        height: 340px;
-    }
-
 
 </style>

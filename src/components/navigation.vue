@@ -10,7 +10,7 @@
             <div>
                 <ul class="daohang">
 
-                    <li v-for="(itme,index) in mydata" :key="(itme,index)" @click="dian(index)" :class="{'list_01':i===index}" class="mylist-01">
+                    <li v-for="(itme,index) in mydata" :key="(itme,index)" @click="dian(index)" :class="{'list_01':itme.name==name}" class="mylist-01">
                         <router-link :to="itme.path">{{itme.name}}</router-link>
                     </li>
 
@@ -39,37 +39,12 @@
         name: "navigation",
         methods:{
             dian:function (index) {
-                this.i=index
+                this.name = this.mydata[index].name
 
             },
-
-            but:function () {
-                if(this.ispan==true){
-                    this.ispan=false;
-                }else{
-                    this.ispan=true
-                }
-            }
-
         },
 
         mounted() {
-
-            function monitoring() {
-                var width = window.innerWidth;
-                if (width < 800) {
-                    this.ispan=true
-                }
-
-            }
-
-            monitoring();
-            window.onresize = function() {
-                monitoring()
-            }
-
-
-
 
         },
 
@@ -100,11 +75,10 @@
                 ],
 
                 ispan:false,
-                i:'',
-
-
+                name:document.title
             }
         },
+
 
 
 
@@ -211,21 +185,11 @@
 
 
     @media screen and (max-width: 800px){
-
         .dengru{
             display: none;
         }
 
     }
-
-
-
-
-
-
-
-
-
 
 
 

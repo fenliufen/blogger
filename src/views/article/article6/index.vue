@@ -10,11 +10,11 @@
                     <span>更新时间：2020年06月11日</span>
                 </p>
 
-                <div class="tome">
-                    <span>11</span>
-                    <span>06</span>
-                    <span>2020</span>
-                </div>
+<!--                <div class="tome">-->
+<!--                    <span>11</span>-->
+<!--                    <span>06</span>-->
+<!--                    <span>2020</span>-->
+<!--                </div>-->
 
             </div>
 
@@ -78,11 +78,14 @@
             </div>
 
 
-
-            <div class="tsxi-01">
-                <a href="javascript:history.go(-1)"><span>友情提示:</span>本章已看完，点击返回文章首页哦</a>
-
+            <div class="title">
+                <p>
+                    <a href="javascript:history.go(-1)">返回上一步</a> >
+                    <a href="/journal">日志文章</a>
+                </p>
             </div>
+
+            <message></message>
 
         </div>
 
@@ -91,11 +94,13 @@
 </template>
 
 <script>
+    import message from "../../../components/message";
     export default {
         name: "index",
-        mounted() {
+        components: {
+            message
+        },
 
-        }
     }
 </script>
 
@@ -104,6 +109,8 @@
         position: relative;
         padding-top: 80px;
         max-width: 1280px;
+        padding-right: 20px;
+        padding-left: 20px;
         margin:90px auto;
         left: auto;
         right: auto;
@@ -246,39 +253,19 @@
     }
 
 
-
-
-
-
-
-
-
-
-    /*友情提示样式*/
-    .tsxi-01 {
+    .title{
+        padding: 10px;
         max-width: 1280px;
-        min-height: 100px;
-        border-top: 1px solid #cccccc;
-        background: #fff;
-        margin-top: 100px;
+        margin: 10px auto 0;
+        background-color:;
+        /*box-shadow: 1px 2px 6px rgba(63,74,105,.16);*/
+        /*border-radius: 3px;*/
     }
 
+    .title p a{
+        color: #555;
+        text-decoration: none;
 
-
-
-    .tsxi-01 a {
-        color: #333333;
-        font-size: 30px;
-        line-height: 100px;
-        padding-left: 1em;
-    }
-
-
-
-
-    .tsxi-01 a:hover {
-        font-weight: bold;
-        color: red;
     }
 
 

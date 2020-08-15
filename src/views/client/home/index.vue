@@ -107,7 +107,7 @@
                 });
 
 
-            axios.get('/home/article/hot')
+            axios.get(' /home/article/hot')
                 .then(function (res) {
                     that.hot=res.data;
 
@@ -291,7 +291,7 @@
     .zhanshi .list li {
         position: relative;
         margin-bottom: 20px;
-        max-width: 960px;
+        width: 100%;
         background-color: #fff;
         animation-duration: 3s;
         animation-name: donghua;
@@ -309,7 +309,8 @@
     }
 
     .content-1 {
-        padding-left: 30px;
+        padding-left: 40px;
+        padding-right: 30px;
     }
 
     .list li .content-1 .list-title span {
@@ -318,6 +319,7 @@
         display: inline-block;
         vertical-align: bottom;
         color: #2ea7e0;
+
     }
 
     .list li .content-1 .list-title a {

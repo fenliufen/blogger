@@ -12,31 +12,28 @@
                         </h5>
 
                         <div class="tome">
-                            <span>{{itme.time.slice(8,10)}}</span>
-                            <span>{{itme.time.slice(5,7)}}</span>
-                            <span>{{itme.time.slice(0,4)}}</span>
+                            <span class="ri">{{itme.time.slice(8,10)}}</span>
+                            <span class="yue">{{itme.time.slice(5,7)}}</span>
+                            <span class="nian">{{itme.time.slice(0,4)}}</span>
                         </div>
 
                         <div class="content">
                             <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">
                                 <img :src="itme.img_path">
                             </a>
-
                             <span>
                             {{itme.content}}
-                           </span>
+                        </span>
                         </div>
 
                         <div class="read-more">
                             <div></div>
                             <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">立即阅读</a>
                         </div>
-
                         <div class="yeqian">
                             <a class="iconfont1"><i class="iconfont">&#xe639;</i>{{itme.classify}}</a>
                             <a class="iconfont1"><i class="iconfont"></i></a>
                         </div>
-
                     </div>
                 </li>
             </ul>
@@ -59,11 +56,13 @@
                         </ul>
                     </div>
 
+
                     <ul class="daohang-list">
                         <li v-for="(itme,index) in navigation " :key="(itme,index)" @click="screening(index)" :class="{'test':i===index}">
                             <a>{{itme}}</a>
                         </li>
                     </ul>
+
 
 
                     <div class="daohang2">
@@ -84,9 +83,6 @@
 
         </div>
     </div>
-
-
-
 
 </template>
 
@@ -252,6 +248,7 @@
 
 <style scoped>
 
+
     .demo1{
         position: relative;
         max-width: 1290px;
@@ -295,7 +292,7 @@
     .zhanshi .list li {
         position: relative;
         margin-bottom: 20px;
-        max-width: 960px;
+        width: 100%;
         background-color: #fff;
         animation-duration: 3s;
         animation-name: donghua;
@@ -313,7 +310,8 @@
     }
 
     .content-1 {
-        padding-left: 30px;
+        padding-left: 40px;
+        padding-right: 30px;
     }
 
     .list li .content-1 .list-title span {
@@ -322,6 +320,7 @@
         display: inline-block;
         vertical-align: bottom;
         color: #2ea7e0;
+
     }
 
     .list li .content-1 .list-title a {
@@ -329,6 +328,7 @@
         text-decoration: none;
         outline: none;
     }
+
 
     .list li .content-1 .tome {
         font-family: SourceCodeProRegular, Menlo, Monaco, Consolas, "Courier New", monospace, 'Helvetica Neue', Arial, sans-serif;
@@ -340,23 +340,23 @@
         line-height: 32px;
     }
 
-    .list li .content-1 .tome span:nth-of-type(1) {
+    .list li .content-1 .tome .ri {
         display: block;
         text-align: center;
         font-weight: 700;
-        font-size: 40px;
         color: #6bc30d;
+        font-size: 40px;
         position: relative;
         top: 2px;
     }
 
-    .list li .content-1 .tome span:nth-of-type(2) {
+    .list li .content-1 .tome .yue {
         color: #989997;
         font-size: 18px;
         padding-right: 10px;
     }
 
-    .list li .content-1 .tome span:nth-of-type(3) {
+    .list li .content-1 .tome .nian {
         color: #989997;
         font-size: 18px;
     }
@@ -540,10 +540,6 @@
         z-index: 1;
     }
 
-    .test{
-        border-left: 5px solid blue;
-    }
-
     .daohang-list li a {
         display: block;
         margin: 0 30px;
@@ -555,6 +551,11 @@
         color: #787977;
         font-size: 14px;
         outline: none;
+
+    }
+
+    .test{
+        border-left: 5px solid blue;
     }
 
     .daohang-list li a:hover {
@@ -628,5 +629,4 @@
         text-align: center;
         font-weight:bold ;
     }
-
 </style>

@@ -1,23 +1,25 @@
 <template>
 
         <div class="div-list">
+                <div class="title">
+                        <h2>博主动态</h2>
+                </div>
+
                 <ul class="list_01">
-                        <li v-for="(itme,index) in mydata" :key="(itme,index)" >
-                                <div class="div-list">
-                                <div :class="index%2==0?myclass1:myclass2">
-                                        <span class="time">{{itme.time}}</span>
+                        <li v-for="itme in mydata" :key="itme">
+                                <div>
+                                        <span class="time">
+                                                {{itme.time}}
+                                                <i ></i>
+                                        </span>
 
-                                        <div class="neir">
-                                                <p>{{itme.content}}</p>
-                                        </div>
+                                        <i class="logo">
+                                                <a>{{itme.content}}</a>
+                                                <span></span>
+                                        </i>
                                 </div>
-                                </div>
-
-                                <i class="iconfont"></i>
                         </li>
-
                 </ul>
-
 
         </div>
 
@@ -25,6 +27,7 @@
 </template>
 
 <script>
+
         import axios from 'axios'
     export default {
 
@@ -42,144 +45,130 @@
                     })
 
             },
+
             data(){
                 return{
                         mydata:[],
-                        myclass1:'liuyan',
-                        myclass2:'liuyan1',
 
                 }
             },
 
-            //操作dom元素放置处
-            mounted() {
-
-
-            },
-
-            methods:{
 
 
 
 
-            },
 
-            computed:{
-
-            }
 
     }
 </script>
 
 <style scoped>
 
+
+
         .div-list{
-                max-width: 900px;
-                margin: 64px auto;
+
+                max-width: 1280px;
+                margin: 100px auto;
                 overflow: auto;
                 overflow-y: hidden;
                 overflow-x: hidden;
                 scrollbar-width: none;
                 padding-bottom: 10px;
+                background: #fff;
+
 
 
         }
+
+        .title{
+                background: url(../../../assets/imgs/9.png) no-repeat right top #fff;
+                padding: 30px;
+        }
+
+        .title h2{
+                font-size: 20px;
+                line-height: 40px;
+                border-bottom: 1px solid #eee;
+                color: #484848;
+                font-weight: normal;
+                position: relative;
+                margin-bottom: 10px;
+
+        }
+
 
         .list_01{
                 box-sizing: border-box;
                 list-style-type: none;
-                width: 6px;
+                width: 100%;
                 margin: 0 auto;
-                padding-top: 50px;
-                background: #fff;
                 min-height: 1000px;
+                background: #fff;
+                overflow: hidden;
         }
 
         .list_01 li{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+        }
 
-                box-sizing: border-box;
-                list-style-type: none;
+        .list_01 li div{
+                text-indent: 2em;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+        }
+
+
+        .list_01 li div .time{
                 position: relative;
-                width: 6px;
-                min-height: 200px;
-                margin: 0 auto;
-                padding-top: 50px;
+                line-height: 32px;
+                padding-right: 40px;
+                color: #999;
+        }
+
+        .list_01 li div .time i{
+                position: absolute;
+                content: "";
+                width: 2px;
+                height: 40px;
+                background: #e0dfdf;
+                right: 18px;
+        }
+
+        .logo{
+                position: relative;
+                font-style: normal;
+        }
+
+        .logo span{
+                height: 10px;
+                width: 10px;
+                border: 2px solid #cccaca;
                 background: #fff;
-        }
-
-        .div-list{
-                max-width: 900px;
-
-        }
-
-        .liuyan{
-
-                 position: absolute;
-                 width: 400px;
-                 min-height: 140px;
-                 box-shadow: 0 0 100px inset aliceblue;
-                 left: 20px;
-                 top: 15px;
-                background: aliceblue;
-                border-radius: 3px;
-        }
-
-        .liuyan1{
                 position: absolute;
-                width: 400px;
-                min-height: 140px;
-                box-shadow: 0 0 100px inset aliceblue;
-                background: aliceblue;
-                right: 20px;
-                top: 15px;
-                border-radius: 3px;
+                top: 4px;
+                left: -26px;
+                border-radius: 50%;
+                -webkit-transition: all .5s ease;
+                -moz-transition: all .5s ease;
+                -ms-transition: all .5s ease;
+                -o-transition: all .5s ease;
+                transition: all .5s ease;
         }
 
-        .time{
-                position: absolute;
-                background: #f5af10;
-                width: 100px;
-                height: 30px;
-                border-radius: 5px;
-                top: -20px;
-                left: 10px;
-                text-align: center;
-                line-height: 30px;
+        .logo a{
+                text-decoration: none;
+                color: #555;
+
         }
 
-        .neir{
-                text-align: center;
-                width: 360px;
-                min-height: 100px;
-                box-shadow: 0 0 100px inset white;
-                margin: 20px auto;
-                background: palegreen;
-                border-radius: 9px;
+        li:hover .logo span{
+                background: black;
+
         }
-
-
-
-        .neir p{
-                padding-top: 20px;
-                text-align: center;
-        }
-
-
-        .list_01 li i{
-                position: absolute;
-                left: 50%;
-                bottom: 0;
-                transform: translateX(-50%) rotate(45deg);
-                width: 20px;
-                height: 20px;
-                z-index: 21;
-                background: blue;
-        }
-
-
-
-
-
 
 
 

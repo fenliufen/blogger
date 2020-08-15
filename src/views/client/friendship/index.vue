@@ -12,8 +12,9 @@
                         <a :href="itme.path" target="view_window">{{itme.name}}</a>
                     </li>
                 </ul>
-
             </div>
+
+
 
             <div class="yqts">
                 <h6><i class="iconfont">&#xe657;</i>申请说明</h6>
@@ -137,9 +138,10 @@
 
     .demo1{
         position: relative;
-        max-width: 1270px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 1280px;
+        left: auto;
+        right: auto;
+        margin: 0 auto;
         background: rgba(255, 255, 255, 0);
         overflow: auto;
         overflow-x: hidden;
@@ -149,12 +151,14 @@
         padding-top:60px ;
 
 
+
     }
 
     .zhanshi{
         width: 100%;
         min-height:1000px ;
         background: #fff;
+        margin: auto;
         padding-right: 10px;
         padding-left: 10px;
 
@@ -168,10 +172,12 @@
     }
 
     .title-01 h6{
+        display: block;
+        padding-top: 60px;
         font-size: 16px;
+        text-indent: 1em;
         color: blue;
         border-bottom: 1px solid #e6e6e6;
-        padding-top: 20px;
         padding-bottom: 1em;
 
     }
@@ -185,28 +191,30 @@
     }
 
     .list-demo ul{
+        overflow: hidden;
         padding-top: 20px;
-        display: block;
-        width: 100%;
-        min-height: 50px;
 
     }
 
     .list-demo ul li{
         float: left;
+        display: block;
         margin-right: 8px;
         padding: 2px 15px;
+        min-height: 20px;
         border-radius: 3px;
         margin-bottom: 10px;
         border: 1px solid #39f;
     }
 
     .yqts{
+        position: relative;
         width: 100%;
-        height: 100%;
+        display: block;
     }
 
     .yqts h6{
+        display: block;
         font-size: 16px;
         text-indent: 1em;
         color: blue;
@@ -224,6 +232,8 @@
     }
 
     .apply-tip p{
+        padding-right: 20px;
+        padding-left: 20px;
         text-indent: 1em;
         line-height: 32px;
         font-size: 16px;
@@ -236,6 +246,7 @@
 
 
    .youlian{
+       /*max-width: 900px;*/
        min-height: 500px;
    }
 
@@ -261,9 +272,8 @@
     .youlian input{
         display: block;
         border: 1px solid rgba(0,0,0, .1);
-        width: 25%;
+        width: 50%;
         min-height: 40px;
-        margin-left: 5px;
         text-indent: 1em;
         font-size: 15px;
         margin-top: 1rem;
@@ -277,8 +287,7 @@
 
     .list_show .test_02{
         display: block;
-        width: 30%;
-        margin-left: 5px;
+        width: 50%;
         border: 1px solid rgba(0,0,0, .1);
         outline: none;
         font-size: 15px;
@@ -298,14 +307,14 @@
 
     .but{
         display: block;
-        width: 10%;
+        width: 100px;
         height: 40px;
         background-color: #1e9fff;
         color: #fff;
         border-radius: 2px;
         text-transform: none;
         margin-top:1rem;
-        margin-left: 4px;
+
 
     }
 

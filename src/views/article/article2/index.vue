@@ -10,11 +10,11 @@
                 <span>更新时间：2020年05月22日</span>
             </p>
 
-            <div class="tome">
-                <span>22</span>
-                <span>05</span>
-                <span>2020</span>
-            </div>
+<!--            <div class="tome">-->
+<!--                <span>22</span>-->
+<!--                <span>05</span>-->
+<!--                <span>2020</span>-->
+<!--            </div>-->
 
         </div>
 
@@ -209,10 +209,15 @@
 
             </ul>
 
-            <div class="tsxi-01">
-                <a href="javascript:history.go(-1)"><span>友情提示:</span>本章已看完，点击返回文章首页哦</a>
+            <div class="title">
+                <p>
+                    <a href="javascript:history.go(-1)">返回上一步</a> >
+                    <a href="/journal">日志文章</a>
+                </p>
 
             </div>
+
+            <message></message>
 
         </div>
 
@@ -221,8 +226,13 @@
 </template>
 
 <script>
+    import message from "../../../components/message";
     export default {
-        name: "index"
+        name: "index",
+        components: {
+            message
+        },
+
     }
 </script>
 
@@ -232,6 +242,8 @@
         padding-top: 80px;
         max-width: 1280px;
         margin-left: auto;
+        padding-right: 20px;
+        padding-left: 20px;
         margin-right: auto;
         margin-top: 90px;
         background: #fff;
@@ -250,8 +262,8 @@
 
     .titer-01 {
         position: relative;
-        width: 1280px;
-        height: 85px;
+        width: 100%;
+        min-height: 85px;
         line-height: 30px;
         padding: 5px 130px 5px 0;
         border-bottom: 1px solid #e8e9e7;
@@ -280,6 +292,7 @@
     .titer-01 p span {
         padding-left: 10px;
     }
+
 
     .titer-01 .tome {
         font-family: SourceCodeProRegular, Menlo, Monaco, Consolas, "Courier New", monospace, 'Helvetica Neue', Arial, sans-serif;
@@ -311,6 +324,7 @@
         font-size: 18px;
         padding-left: 6px;
     }
+
 
     .zhanshi-01 {
         max-width: 1280px;
@@ -359,27 +373,23 @@
     .test-01 {
         font-weight: bold;
         font-size: 20px;
-    }
 
-    .tsxi-01 {
+    }
+    .title{
+        padding: 10px;
         max-width: 1280px;
-        height: 100px;
-        border-top: 1px solid #cccccc;
-        background: #fff;
-        margin-top: 100px;
+        margin: 10px auto 0;
+        background-color:;
+        /*box-shadow: 1px 2px 6px rgba(63,74,105,.16);*/
+        /*border-radius: 3px;*/
     }
 
-    .tsxi-01 a {
-        color: #333333;
-        font-size: 30px;
-        line-height: 100px;
-        padding-left: 1em;
+    .title p a{
+        color: #555;
+        text-decoration: none;
+
     }
 
-    .tsxi-01 a:hover {
-        font-weight: bold;
-        color: red;
-    }
 
     .list-03 li p {
         padding-left: 20px;

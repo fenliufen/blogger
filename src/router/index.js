@@ -126,6 +126,16 @@ Vue.use(VueRouter);
         title: '转账测试详解'   // 标题设置
       }
     },
+    {
+      path: '/article7',
+      name: 'article7',
+      component: () => import('../views/article/article7'),
+      meta: {
+        title: 'index'   // 标题设置
+      }
+    },
+
+
 
 
 

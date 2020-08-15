@@ -1,6 +1,4 @@
 <template>
-
-
     <div class="about_01">
 
 
@@ -8,7 +6,9 @@
 
 
             <div class="head-img">
-                <img src="../../../assets/liuyan-web.jpg" width="100%" height="100%">
+                <div class="div_img">
+                    <img src="../../../assets/liuyan-web.jpg" width="100%" height="100%">
+               </div>
             </div>
 
 
@@ -70,6 +70,9 @@
                 <div class="desc">
                     <p>一个90后青年站长！测试工程师、Web前端工程师。</p>
                     <p>欢迎您，来到我的个人博客，你，我生命中一个重要的过客，我们之所以是过客，因为你未曾会为我停留。</p>
+                    <p>我不太知道这个博客最终会变成什么样。我只是想找一个地方，记录自己学习的痕迹。分享心得
+                        希望这个博客越写越好~
+                    </p>
                 </div>
             </div>
 
@@ -85,7 +88,7 @@
 
         created() {
             var tath=this;
-            axios.get('/message/liuyan')
+            axios.get(' /message/liuyan')
             .then(function (res) {
                 tath.mydata=res.data;
 
@@ -213,15 +216,14 @@
         background: #fff;
     }
 
-    .head-img img{
-        position: absolute;
-        display: block;
+    .div_img{
+        margin: 20px auto;
         max-width: 900px;
         height: 240px;
-        left: 30px;
-        top: 20px;
-        border-radius:6px ;
+
+
     }
+
 
 
 
@@ -266,12 +268,13 @@
     .test_show{
         max-width: 730px;
         margin: 0 auto;
+        padding-right: 20px;
     }
 
 
 
     .test_02{
-        width: 716px;
+        width: 100%;
         min-height: 80px;
         text-indent: 1em;
         outline:none;
@@ -375,8 +378,8 @@
     /*关于我内容区*/
 
     .about_02{
-        position: absolute;
-        right: 0;
+        position: fixed;
+        right: 300px;
         top: 90px;
         max-width: 300px;
         float: right;
