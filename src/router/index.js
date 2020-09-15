@@ -131,15 +131,17 @@ Vue.use(VueRouter);
       name: 'article7',
       component: () => import('../views/article/article7'),
       meta: {
-        title: 'index'   // 标题设置
+        title: 'linux常用命令2'   // 标题设置
       }
     },
-
-
-
-
-
-
+    {
+      path: '/article8',
+      name: 'article8',
+      component: () => import('../views/article/article8'),
+      meta: {
+        title: 'ui自动化po设计'   // 标题设置
+      }
+    },
 
   ];
 
