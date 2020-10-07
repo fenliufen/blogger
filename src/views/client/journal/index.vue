@@ -95,7 +95,7 @@
             axios.get('/journal/article')
                 .then(function (res) {
                     that.mydata=res.data;
-                    that.filtrate=that.mydata
+                    that.filtrate=that.mydata.content
 
                 })
                 .catch(function (err) {
@@ -106,7 +106,7 @@
 
             axios.get('/journal/article/hot')
                 .then(function (res) {
-                    that.hot=res.data;
+                    that.hot=res.data.content;
 
                 })
                 .catch(function (err) {
@@ -133,13 +133,14 @@
             screening:function screening(index){
                 var arr=[];
                 this.i=index;
+
                 if(index==0){
-                    return this.filtrate = this.mydata;
+                    return this.filtrate = this.mydata.content;
                 }
 
                 if (index==1){
 
-                    this.mydata.forEach(function(itme) {
+                    this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '网站测试') {
                             arr.push(itme);
                         }
@@ -148,7 +149,7 @@
                 }
 
                 if (index==2){
-                    this.mydata.forEach(function(itme) {
+                    this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '网站开发') {
                             arr.push(itme);
                         }
@@ -158,17 +159,17 @@
                 }
 
                 if (index==3){
-                    this.mydata.forEach(function(itme) {
+                    this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '操作系统') {
                             arr.push(itme);
                         }
                     });
-                    return  this.filtrate = arr;
+                    return this.filtrate = arr;
 
                 }
 
                 if (index==4){
-                    this.mydata.forEach(function(itme) {
+                    this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '深度学习') {
                             arr.push(itme);
                         }
@@ -176,17 +177,17 @@
                     return this.filtrate = arr;
                 }
                 if (index==5){
-                    this.mydata.forEach(function(itme) {
+                    this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '程序算法') {
                             arr.push(itme);
                         }
                     });
-                    return  this.filtrate = arr;
+                    return this.filtrate = arr;
 
                 }
 
                 if (index==6){
-                    this.mydata.forEach(function(itme) {
+                    this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '其他') {
                             arr.push(itme);
                         }
@@ -195,10 +196,6 @@
 
                 }
             },
-
-
-
-
 
         },
 

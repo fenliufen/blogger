@@ -51,7 +51,7 @@
             axios.post('/meswzpl/howliuyan',qs.stringify({
                 'path':window.location.pathname
             })).then(function (res) {
-                thah.mydata=res.data;
+                thah.mydata=res.data.content;
                 // thah.msgdata.relevance = res.data[1].relevance
 
 
@@ -97,7 +97,7 @@
 
                 )
                     .then(function (res) {
-                        that.mydata=res.data
+                        that.mydata=res.data.content
 
                     })
                     .catch(function (err) {

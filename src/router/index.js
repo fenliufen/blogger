@@ -142,6 +142,14 @@ Vue.use(VueRouter);
         title: 'ui自动化po设计'   // 标题设置
       }
     },
+    {
+      path: '/article9',
+      name: 'article9',
+      component: () => import('../views/article/article9'),
+      meta: {
+        title: 'jmeter存储变量函数'   // 标题设置
+      }
+    },
 
   ];
 

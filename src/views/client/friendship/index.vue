@@ -77,7 +77,7 @@
             var that=this;
             axios.get('/friendship/double')
            .then(function (res) {
-               that.mydata=res.data;
+               that.mydata=res.data.content;
            })
             .catch(function (err) {
                 console.log(err)
@@ -113,7 +113,7 @@
 
                 axios.post('/friendship/increased/pz',qs.stringify(that.formdata))
                 .then(function (res) {
-                    that.mydata=res.data;
+                    that.mydata=res.data.content;
 
                 })
                 .catch(function (err) {

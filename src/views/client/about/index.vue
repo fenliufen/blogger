@@ -88,9 +88,9 @@
 
         created() {
             var tath=this;
-            axios.get(' /message/liuyan')
+            axios.get('/message/liuyan')
             .then(function (res) {
-                tath.mydata=res.data;
+                tath.mydata=res.data.content;
 
             })
             .catch(function (err) {
@@ -126,7 +126,7 @@
 
                 )
                     .then(function (res) {
-                        that.mydata=res.data
+                        that.mydata=res.data.content
 
                     })
                     .catch(function (err) {
@@ -378,8 +378,8 @@
     /*关于我内容区*/
 
     .about_02{
-        position: fixed;
-        right: 300px;
+        position: absolute;
+        right: 0;
         top: 90px;
         max-width: 300px;
         float: right;
