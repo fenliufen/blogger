@@ -123,7 +123,7 @@
                 //     alert('请输入查询内容');
                 // }
 
-                this.filtrate = this.mydata.filter(function(item) {
+                this.filtrate = this.mydata.content.filter(function(item) {
                     return item.title.includes((_this.shou).trim()) || item.classify.includes((_this.shou).trim());
                 });
 

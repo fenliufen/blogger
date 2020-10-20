@@ -273,8 +273,8 @@
 
     .list-01 li p{
         padding-top:20px ;
-        width: 100%;
-        height: 100%;
+        width: 80%;
+        height: 80%;
     }
 
     .list-01 li p img{

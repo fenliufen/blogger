@@ -151,6 +151,24 @@ Vue.use(VueRouter);
       }
     },
 
+    {
+      path: '/article10',
+      name: 'article10',
+      component: () => import('../views/article/article10'),
+      meta: {
+        title: 'jmeter常用函数（一）'   // 标题设置
+      }
+    },
+
+    {
+      path: '/article11',
+      name: 'article11',
+      component: () => import('../views/article/article11'),
+      meta: {
+        title: 'oracle常用函数的介绍（一）'   // 标题设置
+      }
+    }
+
   ];
 
 const router = new VueRouter({

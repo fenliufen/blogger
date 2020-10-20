@@ -33,7 +33,7 @@
             <div class="comment-list">
                 <h3>
                     <i class="iconfont">&#xe619;</i>
-                    已经有{{mydata.length}}小伙伴参与留言
+                    已经有{{mydata.length}}个小伙伴参与留言
                 </h3>
                 <ul class="list_show">
                     <li v-for="(itme,index) in mydata" :key="(itme,index)">
