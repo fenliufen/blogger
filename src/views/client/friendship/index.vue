@@ -33,7 +33,7 @@
                 <div class="apply-tip">
                     <p>更新频率：每周1-3篇原创文章</p>
                     <p>博客名称：疯子博客</p>
-                    <p>博客地址：http://112.74.38.68:8080/</p>
+                    <p>github地址：https://github.com/fenliufen</p>
                     <p>博客服务器：阿里云ECS服务器 <a href="https://www.aliyun.com/?utm_content=se_1000301881" target="view_window">点击进入官网购买</a></p>
                     <p>博客介绍：文章分享，技术分享</p>
                 </div>
