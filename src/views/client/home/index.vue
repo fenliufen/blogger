@@ -84,9 +84,6 @@
         </div>
     </div>
 
-
-
-
 </template>
 
 <script>
@@ -95,39 +92,55 @@
         name: "index",
         created() {
             var that=this;
+
             axios.get('/home/article')
                 .then(function (res) {
                     that.mydata=res.data;
                     that.filtrate=that.mydata.content
+
                 })
                 .catch(function (err) {
                     console.log(err)
+
                 });
+
+
             axios.get('/home/article/hot')
                 .then(function (res) {
                     that.hot=res.data.content;
+
                 })
                 .catch(function (err) {
                     console.log(err)
+
                 })
         },
+
         methods:{
             guolu: function guolu() {
                 var _this = this;
+
                 // if (this.shou == '') {
                 //     alert('请输入查询内容');
                 // }
+
                 this.filtrate = this.mydata.content.filter(function(item) {
                     return item.title.includes((_this.shou).trim()) || item.classify.includes((_this.shou).trim());
                 });
+
                 // this.shou = '';
             },
+
             screening:function screening(index){
                 var arr=[];
+                this.i=index;
+
                 if(index==0){
                     return this.filtrate = this.mydata.content;
                 }
+
                 if (index==1){
+
                     this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '网站测试') {
                             arr.push(itme);
@@ -135,6 +148,7 @@
                     });
                     return this.filtrate = arr;
                 }
+
                 if (index==2){
                     this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '网站开发') {
@@ -142,15 +156,19 @@
                         }
                     });
                     return this.filtrate = arr;
+
                 }
+
                 if (index==3){
                     this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '操作系统') {
                             arr.push(itme);
                         }
                     });
-                    return this.filtrate= arr;
+                    return this.filtrate = arr;
+
                 }
+
                 if (index==4){
                     this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '深度学习') {
@@ -165,36 +183,49 @@
                             arr.push(itme);
                         }
                     });
-                    return this.filtrate= arr;
+                    return this.filtrate = arr;
+
                 }
+
                 if (index==6){
                     this.mydata.content.forEach(function(itme) {
                         if (itme.classify === '其他') {
                             arr.push(itme);
                         }
                     });
-                    return this.filtrate= arr;
+                    return this.filtrate = arr;
+
                 }
             },
+
         },
+
         mounted(){
             var zhanshi = document.querySelector('.zhanshi');
             var doahang = document.querySelector('.daohanglan');
+
             function monitoring() {
                 var width = window.innerWidth;
                 if (width < 1300) {
                     doahang.style.display = 'none';
                     zhanshi.style.margin = 'auto';
+
+
                 } else if (width >= 1300) {
                     doahang.style.display = 'block';
                     zhanshi.style.margin = '0'
                 }
+
             }
+
             monitoring();
             window.onresize = function() {
                 monitoring()
             }
+
+
         },
+
         data(){
             return{
                 mydata:[],
@@ -204,10 +235,15 @@
                 navigation:[
                     '全部文章','网站测试','网站开发','操作系统','深度学习','程序算法','其他'
                 ],
+                i:'',
+
+
             }
         }
+
     }
 </script>
+
 
 <style scoped>
     .demo1{
@@ -226,7 +262,7 @@
     /*内容展示css样式*/
     .zhanshi {
         max-width: 960px;
-        min-height: 800px;
+        min-height: 730px;
     }
     .zhanshi .tisi {
         font-size: 25px;
@@ -297,15 +333,19 @@
         font-size: 18px;
         padding-right: 10px;
     }
+
+
     .list li .content-1 .tome .nian {
         color: #989997;
         font-size: 18px;
     }
+
+
     .list li .content-1 .content {
         margin: 20px 0 0 0;
         line-height: 28px;
         position: relative;
-        min-height: 200px;
+        min-height: 100px;
         font-size: 14px;
         color: #515250;
         text-align: justify;
@@ -313,8 +353,8 @@
     }
     .list li .content-1 .content a {
         display: block;
-        width: 300px;
-        height: 180px;
+        width: 100px;
+        height: 80px;
         border: 1px solid #e8e9e7;
         overflow: hidden;
         float: left;
@@ -528,4 +568,29 @@
         text-align: center;
         font-weight:bold ;
     }
+
+
+    /*查看更多的样式*/
+
+    .gengduo{
+        width: 100%;
+        display: block;
+        float: left;
+        padding-bottom: 10px;
+
+    }
+
+    .gengduo a{
+        width: 180px;
+        margin: 0 auto;
+        height: 38px;
+        line-height: 39px;
+        display: block;
+        text-align: center;
+        border-radius: 50px;
+        color: blue;
+        border: 1px solid green;
+        transition: all 0.3s;
+    }
+
 </style>

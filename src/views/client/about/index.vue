@@ -85,7 +85,6 @@
     import qs from 'qs'
     export default {
         name: "index",
-
         created() {
             var tath=this;
             axios.get('/message/liuyan')

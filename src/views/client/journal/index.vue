@@ -92,6 +92,7 @@
         name: "index",
         created() {
             var that=this;
+
             axios.get('/journal/article')
                 .then(function (res) {
                     that.mydata=res.data;
@@ -243,9 +244,8 @@
     }
 </script>
 
+
 <style scoped>
-
-
     .demo1{
         position: relative;
         max-width: 1290px;
@@ -258,25 +258,18 @@
         /*火狐去掉滚动条*/
         scrollbar-width: none;
         padding-top:90px ;
-
-
-
     }
-
     /*内容展示css样式*/
     .zhanshi {
         max-width: 960px;
-        min-height: 800px;
-
+        min-height: 730px;
     }
-
     .zhanshi .tisi {
         font-size: 25px;
         font-weight: bold;
         color: green;
         text-align: center;
     }
-
     .zhanshi .list {
         display: flex;
         justify-content: flex-end;
@@ -285,7 +278,6 @@
         max-width: 960px;
         height: 100%;
     }
-
     .zhanshi .list li {
         position: relative;
         margin-bottom: 20px;
@@ -295,9 +287,6 @@
         animation-name: donghua;
         border-radius: 3px;
     }
-
-
-
     .list li .content-1 .list-title {
         line-height: 30px;
         padding: 5px 130px 5px 0;
@@ -305,28 +294,22 @@
         font-size: 18px;
         font-weight: 400;
     }
-
     .content-1 {
         padding-left: 40px;
         padding-right: 30px;
     }
-
     .list li .content-1 .list-title span {
         font-size: 16px;
         font-weight: 400;
         display: inline-block;
         vertical-align: bottom;
         color: #2ea7e0;
-
     }
-
     .list li .content-1 .list-title a {
         color: #212220;
         text-decoration: none;
         outline: none;
     }
-
-
     .list li .content-1 .tome {
         font-family: SourceCodeProRegular, Menlo, Monaco, Consolas, "Courier New", monospace, 'Helvetica Neue', Arial, sans-serif;
         position: absolute;
@@ -336,7 +319,6 @@
         padding: 0 20px 5px 20px;
         line-height: 32px;
     }
-
     .list li .content-1 .tome .ri {
         display: block;
         text-align: center;
@@ -346,33 +328,33 @@
         position: relative;
         top: 2px;
     }
-
     .list li .content-1 .tome .yue {
         color: #989997;
         font-size: 18px;
         padding-right: 10px;
     }
 
+
     .list li .content-1 .tome .nian {
         color: #989997;
         font-size: 18px;
     }
 
+
     .list li .content-1 .content {
         margin: 20px 0 0 0;
         line-height: 28px;
         position: relative;
-        min-height: 200px;
+        min-height: 100px;
         font-size: 14px;
         color: #515250;
         text-align: justify;
         padding-right: 10px;
     }
-
     .list li .content-1 .content a {
         display: block;
-        width: 300px;
-        height: 180px;
+        width: 100px;
+        height: 80px;
         border: 1px solid #e8e9e7;
         overflow: hidden;
         float: left;
@@ -381,19 +363,16 @@
         text-decoration: none;
         outline: none;
     }
-
     .list li .content-1 .content a img {
         display: block;
         width: 100% !important;
         height: 100% !important;
     }
-
     .list li .content-1 .read-more {
         height: 40px;
         line-height: 40px;
         position: relative;
     }
-
     .list li .content-1 .read-more div {
         display: inline-block;
         height: 1px;
@@ -403,7 +382,6 @@
         position: absolute;
         background-color: #d0d0d0;
     }
-
     .list li .content-1 .read-more a {
         font-weight: bold;
         font-size: 14px;
@@ -412,39 +390,25 @@
         text-decoration: none;
         outline: none;
     }
-
     .list li .content-1 .read-more a:hover {
         font-weight: bold;
         color: red;
     }
-
-
     /*页签*/
-
     .yeqian{
         padding-top: 10px;
         padding-bottom: 10px;
     }
-
     .iconfont1{
         color: #279c63;
         font-size: 12px;
     }
-
-
-
     .iconfont1  i{
         color: #279c63;
         font-size: 12px;
         padding-right:6px;
     }
-
-
-
     /*导航栏样式*/
-
-
-
     .daohanglan {
         position: absolute;
         right: 0;
@@ -452,21 +416,17 @@
         width: 300px;
         float: right;
     }
-
     .doahang1 {
         width: 300px;
         height: 405px;
         background-color: #fff;
         border-radius: 3px;
-
     }
-
     @media all and (max-height:1200px) {
         .doahang1 {
             position: fixed;
         }
     }
-
     .doahang-tlter {
         position: relative;
         width: 300px;
@@ -474,7 +434,6 @@
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         background-color: grey;
     }
-
     .doahang-tlter ul {
         width: 209px;
         z-index: 100;
@@ -483,7 +442,6 @@
         top: 65px;
         background: aliceblue;
     }
-
     .doahang-tlter label {
         position: absolute;
         display: block;
@@ -495,7 +453,6 @@
         top: 20px;
         z-index: 5;
     }
-
     .doahang-tlter label input {
         border: none;
         height: 40px;
@@ -505,7 +462,6 @@
         background-color: transparent;
         outline: none;
     }
-
     .doahang-tlter label span {
         font-size: 18px;
         position: absolute;
@@ -520,7 +476,6 @@
         transition: all .3s;
         cursor: pointer;
     }
-
     .daohang-list {
         position: absolute;
         width: 300px;
@@ -528,7 +483,6 @@
         background-color: #fff;
         opacity: 0.9;
     }
-
     .daohang-list li {
         display: block;
         height: 40px;
@@ -536,7 +490,6 @@
         position: relative;
         z-index: 1;
     }
-
     .daohang-list li a {
         display: block;
         margin: 0 30px;
@@ -548,18 +501,14 @@
         color: #787977;
         font-size: 14px;
         outline: none;
-
     }
-
     .test{
         border-left: 5px solid blue;
     }
-
     .daohang-list li a:hover {
         font-weight: bold;
         color: green;
     }
-
     .daohang2 {
         position: relative;
         width: 300px;
@@ -567,7 +516,6 @@
         top: 330px;
         border-radius: 3px;
     }
-
     .daohang2 h5 {
         margin: 10px 20px;
         padding: 5px;
@@ -578,18 +526,15 @@
         position: relative;
         font-size: 18px;
     }
-
     .daohang2 div {
         margin: 0 20px;
         padding-bottom: 10px;
     }
-
     .daohang2 div ul {
         margin: 0;
         padding: 0;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
-
     .daohang2 div ul li {
         height: 40px;
         width: 352px;
@@ -603,7 +548,6 @@
         color: #787977;
         font-size: 14px;
     }
-
     .daohang2 div ul li a {
         height: 40px;
         width: 100%;
@@ -613,12 +557,10 @@
         text-decoration: none;
         outline: none;
     }
-
     .daohang2 div ul li :hover {
         font-weight: bold;
         color: green;
     }
-
     .tixi{
         width: 100%;
         color: green;
@@ -626,4 +568,29 @@
         text-align: center;
         font-weight:bold ;
     }
+
+
+    /*查看更多的样式*/
+
+    .gengduo{
+        width: 100%;
+        display: block;
+        float: left;
+        padding-bottom: 10px;
+
+    }
+
+    .gengduo a{
+        width: 180px;
+        margin: 0 auto;
+        height: 38px;
+        line-height: 39px;
+        display: block;
+        text-align: center;
+        border-radius: 50px;
+        color: blue;
+        border: 1px solid green;
+        transition: all 0.3s;
+    }
+
 </style>

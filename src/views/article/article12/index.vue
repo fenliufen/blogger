@@ -2,126 +2,135 @@
     <div>
         <div class="demo1">
             <div class="titer-01">
-                <h4>oracle常用函数介绍（一）</h4>
+                <h4>jmeter常用组件</h4>
                 <p>
                     <span>作者：从小就疯了</span>
-                    <span>观看群众：40</span>
-                    <span>分类：网站测试</span>
-                    <span>更新时间：2020年10月18日</span>
+                    <span>观看群众：22</span>
+                    <span>分类：测试</span>
+                    <span>更新时间：2020年11月01日</span>
 
                 </p>
 
-
                 <div class="tome">
-                    <span>18</span>
-                    <span>10</span>
+                    <span>01</span>
+                    <span>11</span>
                     <span>2020</span>
                 </div>
-
-
 
             </div>
 
 
             <div class="zhanshi-01">
 
-                <h1>oracle常用函数介绍（一）</h1>
 
-                <h3>一、LAST_DAY()</h3>
+
+
+                <h1>jmeter常用组件介绍（一）</h1>
+
+                <h3>一、事务控制器</h3>
                 <ul class="list-01">
                     <li>
                         <strong>作用：</strong><br>
-                        LAST_DAY函数返回指定日期对应月份的最后一天。<br>
-                        示例：SELECT last_day(SYSDATE) FROM dual;<br>
-
-                    </li>
-                </ul>
-
-
-                <h3>二、add_months()</h3>
-                <ul class="list-01">
-                    <li>
-                        <strong>作用：</strong><br>
-                        add_months 函数主要是对日期函数进行操作，举例子进行说明<br>
-                        add_months 有两个参数，第一个参数是日期，第二个参数是对日期进行加减的数字(以月为单位的)<br>
-                    </li>
-                    <li>
-                        如：3个月以后的时间，可以用下列语句
+                        1、Generate parent sample：如果事务控制器下有多个取样器，勾选它，那么在“擦看结果树”中我们不仅可以看到事务控制器，还可以看到每个取样器，<br>
+                        并且事务控制器定义的事务是否成功取决于子事 务是否都成功，子事务其中任何一个失败即代表整个事务失败。<br>
+                        2、Include duration of timer and pre-post processors in generated sample：是否包括定时器、预处理和后期处理延迟的时间<br>
                         <p><img src="./1.png"></p>
                     </li>
-
-                    <li>
-                        如：3个月以前的时间，可以用下列语句
-                        <p><img src="./2.png"></p>
-                    </li>
-
-                    <li>
-                        有时需要用to_date()函数进行转换
-                        <p><img src="./3.png"></p>
-                    </li>
-
                 </ul>
 
-                <h3>三、sysdate</h3>
+
+                <h3>二、循环控制器</h3>
                 <ul class="list-01">
                     <li>
                         <strong>作用：</strong><br>
-                        获取当前时间<br>
-                        示例：
-                        SELECT SYSDATE FROM dual;
+                        正如名字一样，用于事务的循环<br>
+                    </li>
+                </ul>
+
+
+
+                <h3>三、仅一次控制器</h3>
+                <ul class="list-01">
+                    <li>
+                        <strong>作用：</strong><br>
+                        在进行压测时，往往登录只需要一次，其他的接口需要循环测试。这里就会用到控制器中的仅一次控制器。只要放置在控制器的请求，不管在哪种情况下， 都只执行一次。
                         <p><img src="./4.png"></p>
                     </li>
-                    <li>
-                        to_date示例如下<br>
-                        to_date('2002-02-28','yyyy-mm-dd')<br>
-                        to_date('2004-05-07 13:23:44','yyyy-mm-dd hh24:mi:ss')
-                    </li>
-
                 </ul>
 
 
-                <h3>四、trunc()</h3>
-                <ul class="list-01">
-                    <li>
-                        <strong>作用：对时间进行自定义处理返回结果</strong><br>
-                        1.select trunc(sysdate) from dual --2013-01-06 今天的日期为2013-01-06<br>
-                        2.select trunc(sysdate, 'mm') from dual --2013-01-01 返回当月第一天.<br>
-                        3.select trunc(sysdate,'yy') from dual --2013-01-01 返回当年第一天<br>
-                        4.select trunc(sysdate,'dd') from dual --2013-01-06 返回当前年月日<br>
-                        5.select trunc(sysdate,'yyyy') from dual --2013-01-01 返回当年第一天<br>
-                        6.select trunc(sysdate,'d') from dual --2013-01-06 (星期天)返回当前星期的第一天<br>
-                        7.select trunc(sysdate, 'hh') from dual --2013-01-06 17:00:00 当前时间为17:35<br>
-                        8.select trunc(sysdate, 'mi') from dual --2013-01-06 17:35:00 TRUNC()函数没有秒的精确
-
-                    </li>
-
-                </ul>
-
-                <h3>五、rownum()</h3>
-                <ul class="list-01">
-                    <li>
-                        <strong>作用：oracle中一张表中查询指定条数数据记录</strong><br>
-                        如：select * from 表名 where rownum ＜ 101
-                    </li>
-
-                </ul>
-
-                <h3>六、sys_guid()</h3>
+                <h3>四、if控制器的使用</h3>
                 <ul class="list-01">
                     <li>
                         <strong>作用：</strong><br>
-                        在oracle8i以后提供了一个生成不重复的数据的一个函数sys_guid()一共32位，生成的依据主要是时间和机器码，具有世界唯一性<br>
+                        作用：直接输入我们需要判断的表达式即可，判断表达式为真时，执行if控制器下的请求，例如“1!=2”为真，则一定会执行下面的http请求
                     </li>
                 </ul>
 
-                <h3>七、round()</h3>
+
+                <h3>五、测试活动</h3>
                 <ul class="list-01">
                     <li>
-                        <strong>作用：指定的值进行四舍5入，接受两个参数  ，一个是指定值，一个是精度</strong><br>
-                        示例：select round(3.4232424,2) from dual ;  保留两位小数
+                        <strong>作用：</strong><br>
+                        1、此取样器也可以与事务控制器结合使用，因为它允许包含暂停而无需生成样本。对于可变延迟，将暂停时间设置为零，并将定时器添加为子级<br>
+                        2、完成正在进行的任何样本后 ，“stop”操作将停止线程或测试。“Stop Now”操作将停止测试，而无需等待样本完成; 它会中断任何活动样本。<br>
+                        如果某些线程未能在5秒的时间限制内停止，则将在GUI模式下显示一条消息。您可以使用Stop命令尝试停止线程，如果不能停止，可以手动退出JMeter。<br>
+                        在CLI模式下，如果某些线程未能在5秒的时间限制内停止，JMeter将退出。<br>
+                        <br>
+                        <strong>选项有以下：</strong><br>
+                        Target：目标，选择是当前线程还是所有线程<br>
+                        Action：Pause（暂停）/Stop（停止）/Stop Now（立即停止）/Go to next loop iteration（转到下一个循环迭代）<br>
+                        Duration：暂停多长时间（毫秒）
+
                         <p><img src="./5.png"></p>
                     </li>
                 </ul>
+
+
+                <h3>六、http缓存管理器</h3>
+                <ul class="list-01">
+                    <li>
+                        <strong>作用：</strong><br>
+                        1、HTTP缓存管理器用于在其范围内向HTTP请求添加缓存功能，用于模拟浏览器缓存功能。每个虚拟用户线程都有自己的缓存。 默认情况下，<br>
+                        缓存管理器在每个虚拟用户线程的缓存中最多存储5000个项目。使用属性“ maxSize ”可以修改此值。 此值增加得越多，HTTP缓存管理器将消耗更多的内存，<br>
+                        因此需要调整Jmeter运行内存以支持缓存管理器运<br>
+                        <br>
+                        2、如果选择了“Use Cache-Control/Expires header when processing GET request ”选项，则会对照当前时间检查“Cache-Control/Expires”值。<br>
+                        如果请求是GET请求，并且时间戳记在缓存之后，则取样器将立即返回，而无需从远程服务器请求URL。这旨在模拟浏览器的行为。如果Cache-Control标头为<br>
+                        “ no-cache ”，则响应将在过期时存储在缓存中，再次进行GET请求时将重新请求远程服务器<br>
+
+                        <p><img src="./6.png"></p>
+                    </li>
+                </ul>
+
+
+                <h3>七、http授权管理器</h3>
+                <ul class="list-01">
+                    <li>
+                        <strong>作用：</strong><br>
+                        1、HTTP授权管理器使可以为使用服务器身份验证限制的网页指定一个或多个用户登录名。当使用浏览器访问受限页面时，可以看到这种身份验证，<br>
+                        并且浏览器将显示一个登录对话框。当遇到此类页面时，JMeter可通过HTTP授权管理器发送登录信息。<br>
+                        <p><img src="./7.png"></p>
+                    </li>
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

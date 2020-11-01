@@ -103,7 +103,7 @@
                 list-style-type: none;
                 width: 100%;
                 margin: 0 auto;
-                min-height: 1000px;
+                min-height: 500px;
                 background: #fff;
                 overflow: hidden;
         }

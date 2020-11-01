@@ -167,6 +167,22 @@ Vue.use(VueRouter);
       meta: {
         title: 'oracle常用函数的介绍（一）'   // 标题设置
       }
+    },
+    {
+      path: '/article12',
+      name: 'article12',
+      component: () => import('../views/article/article12'),
+      meta: {
+        title: 'jmeter常用组件介绍（一）'   // 标题设置
+      }
+    },
+    {
+      path: '/article13',
+      name: 'article13',
+      component: () => import('../views/article/article13'),
+      meta: {
+        title: 'jmeter常用组件介绍（二）'   // 标题设置
+      }
     }
 
   ];
