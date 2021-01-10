@@ -183,6 +183,30 @@ Vue.use(VueRouter);
       meta: {
         title: 'jmeter常用组件介绍（二）'   // 标题设置
       }
+    },
+    {
+      path: '/article14',
+      name: 'article14',
+      component: () => import('../views/article/article14'),
+      meta: {
+        title: 'py json读写'   // 标题设置
+      }
+    },
+    {
+      path: '/article15',
+      name: 'article15',
+      component: () => import('../views/article/article15'),
+      meta: {
+        title: 'py yml读写'   // 标题设置
+      }
+    },
+    {
+      path: '/article16',
+      name: 'article16',
+      component: () => import('../views/article/article16'),
+      meta: {
+        title: 'allure 装饰器介绍'   // 标题设置
+      }
     }
 
   ];

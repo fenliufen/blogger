@@ -8,11 +8,13 @@ import './assets/top'
 
 
 
-Vue.config.productionTip = false
-Vue.use(VueWechatTitle)
+Vue.config.productionTip = false;
+Vue.use(VueWechatTitle);
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+
