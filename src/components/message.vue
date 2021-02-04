@@ -47,31 +47,8 @@
     export default {
         name: "index",
         created() {
-            var thah=this;
-            axios.post('/meswzpl/howliuyan',qs.stringify({
-                'path':window.location.pathname
-            })).then(function (res) {
-                thah.mydata=res.data.content;
-                // thah.msgdata.relevance = res.data[1].relevance
 
-
-
-            }).catch(function (err) {
-                console.log(err);
-            });
-
-
-            axios.post('/meswzpl/howliuyan/id',qs.stringify({
-                'path':window.location.pathname
-            })).then(function (res) {
-                thah.msgdata.relevance = res.data[0].relevance
-
-
-
-            }).catch(function (err) {
-                console.log(err);
-            });
-
+            this.message()
 
         },
 
@@ -110,6 +87,37 @@
 
 
             },
+
+            message:function () {
+
+                //每次进来页面的时候初始化留言
+                var thah=this;
+                axios.post('/meswzpl/howliuyan',qs.stringify({
+                    'path':window.location.pathname
+                })).then(function (res) {
+                    thah.mydata=res.data.content;
+                    // thah.msgdata.relevance = res.data[1].relevance
+
+
+
+                }).catch(function (err) {
+                    console.log(err);
+                });
+
+
+                //每次进来的时候查询下关联的字段id
+                axios.post('/meswzpl/howliuyan/id',qs.stringify({
+                    'path':window.location.pathname
+                })).then(function (res) {
+                    thah.msgdata.relevance = res.data[0].relevance
+
+
+
+                }).catch(function (err) {
+                    console.log(err);
+                });
+
+            }
 
         },
 

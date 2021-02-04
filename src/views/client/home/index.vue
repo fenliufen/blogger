@@ -39,7 +39,7 @@
             </ul>
 
 
-            <!--        右侧导航栏-->
+            <!--右侧导航栏-->
 
             <div class="daohanglan">
 
@@ -91,50 +91,22 @@
     export default {
         name: "index",
         created() {
-            var that=this;
-
-            axios.get('/home/article')
-                .then(function (res) {
-                    that.mydata=res.data;
-                    that.filtrate=that.mydata.content
-
-                })
-                .catch(function (err) {
-                    console.log(err)
-
-                });
-
-
-            axios.get('/home/article/hot')
-                .then(function (res) {
-                    that.hot=res.data.content;
-
-                })
-                .catch(function (err) {
-                    console.log(err)
-
-                })
+            this.initialize()
         },
 
         methods:{
             guolu: function guolu() {
                 var _this = this;
-
-                // if (this.shou == '') {
-                //     alert('请输入查询内容');
-                // }
-
                 this.filtrate = this.mydata.content.filter(function(item) {
                     return item.title.includes((_this.shou).trim()) || item.classify.includes((_this.shou).trim());
                 });
 
-                // this.shou = '';
             },
 
             screening:function screening(index){
+
                 var arr=[];
                 this.i=index;
-
                 if(index==0){
                     return this.filtrate = this.mydata.content;
                 }
@@ -197,6 +169,35 @@
 
                 }
             },
+
+
+            //页面初始化函数
+            initialize:function () {
+
+                var _this=this;
+                axios.get('/home/article')
+                    .then(function (res) {
+                        that.mydata=res.data;
+                        _this.filtrate= _this.mydata.content
+
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+
+                    });
+
+
+
+                axios.get('/home/article/hot')
+                    .then(function (res) {
+                        _this.hot=res.data.content;
+
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+
+                    })
+            }
 
         },
 
