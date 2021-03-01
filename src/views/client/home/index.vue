@@ -3,6 +3,7 @@
         <div class="zhanshi">
             <div class="tixi" v-if=" filtrate=='' ">暂无数据！</div>
             <ul class="list">
+
                 <li v-for="itme in filtrate" :key="itme">
                     <div class="content-1">
 
@@ -36,6 +37,8 @@
                         </div>
                     </div>
                 </li>
+
+
             </ul>
 
 
