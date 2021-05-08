@@ -92,7 +92,7 @@
 
                 //每次进来页面的时候初始化留言
                 var thah=this;
-                axios.post('/meswzpl/howliuyan',qs.stringify({
+                thah.$axios.post('/meswzpl/howliuyan',qs.stringify({
                     'path':window.location.pathname
                 })).then(function (res) {
                     thah.mydata=res.data.content;
@@ -106,7 +106,7 @@
 
 
                 //每次进来的时候查询下关联的字段id
-                axios.post('/meswzpl/howliuyan/id',qs.stringify({
+                thah.$axios.post('/meswzpl/howliuyan/id',qs.stringify({
                     'path':window.location.pathname
                 })).then(function (res) {
                     thah.msgdata.relevance = res.data[0].relevance

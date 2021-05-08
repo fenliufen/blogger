@@ -75,7 +75,7 @@
         name: "index",
         created() {
             var that=this;
-            axios.get('/friendship/double')
+            that.$axios.get('/friendship/double')
            .then(function (res) {
                that.mydata=res.data.content;
            })
@@ -111,7 +111,7 @@
                 }
 
 
-                axios.post('/friendship/increased/pz',qs.stringify(that.formdata))
+                that.$axios.post('/friendship/increased/pz',qs.stringify(that.formdata))
                 .then(function (res) {
                     that.mydata=res.data.content;
 
@@ -119,12 +119,12 @@
                 .catch(function (err) {
                     console.log(err)
 
-                })
+                });
 
-                that.formdata.name=''
-                that.formdata.path=''
-                that.formdata.mailbox=''
-                that.formdata.miaosu=''
+                that.formdata.name='';
+                that.formdata.path='';
+                that.formdata.mailbox='';
+                that.formdata.miaosu='';
                 return alert('提交成功')
 
             }
@@ -272,7 +272,7 @@
     .youlian input{
         display: block;
         border: 1px solid rgba(0,0,0, .1);
-        width: 50%;
+        width: 300px;
         min-height: 40px;
         text-indent: 1em;
         font-size: 15px;
@@ -287,7 +287,7 @@
 
     .list_show .test_02{
         display: block;
-        width: 50%;
+        width: 300px;
         border: 1px solid rgba(0,0,0, .1);
         outline: none;
         font-size: 15px;

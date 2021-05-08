@@ -34,7 +34,7 @@
         name: "index",
             created() {
                     var that=this;
-                    axios.get('/dynamic/content')
+                    that.$axios.get('/dynamic/content')
                     .then(function (res) {
                              that.mydata=res.data.content
 

@@ -207,7 +207,24 @@ Vue.use(VueRouter);
       meta: {
         title: 'allure 装饰器介绍'   // 标题设置
       }
-    }
+    },
+    {
+      path: '/article17',
+      name: 'article17',
+      component: () => import('../views/article/article17'),
+      meta: {
+        title: '性能测试步骤解析'   // 标题设置
+      }
+    },
+
+    {
+      path: '/article18',
+      name: 'article18',
+      component: () => import('../views/article/article18'),
+      meta: {
+        title: '性能测试步骤解析'   // 标题设置
+      }
+    },
 
   ];
 

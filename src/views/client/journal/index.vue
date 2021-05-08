@@ -93,7 +93,7 @@
         created() {
             var that=this;
 
-            axios.get('/journal/article')
+            that.$axios.get('/journal/article')
                 .then(function (res) {
                     that.mydata=res.data;
                     that.filtrate=that.mydata.content
@@ -105,7 +105,7 @@
                 });
 
 
-            axios.get('/journal/article/hot')
+            that.$axios.get('/journal/article/hot')
                 .then(function (res) {
                     that.hot=res.data.content;
 

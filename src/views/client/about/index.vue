@@ -87,7 +87,7 @@
         name: "index",
         created() {
             var tath=this;
-            axios.get('/message/liuyan')
+            tath.$axios.get('/message/liuyan')
             .then(function (res) {
                 tath.mydata=res.data.content;
 
@@ -115,7 +115,7 @@
                 }
 
 
-                axios.post('/message/liuyan',
+                that.$axios.post('/message/liuyan',
                     qs.stringify({
                         'name': that.name,
                         'mailbox': that.mailbox,
