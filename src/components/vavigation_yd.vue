@@ -58,6 +58,7 @@
 
         mounted() {
 
+
         },
 
 
@@ -142,6 +143,7 @@
         position: absolute;
 
     }
+
     .daohang{
         padding-top: 50px;
     }
@@ -154,6 +156,7 @@
 
     .list_01 a{
         border-bottom:3px solid green ;
+
     }
 
 
@@ -164,7 +167,7 @@
         color: #212220;
         font-weight: 400;
         font-size: 16px;
-        max-width:100px;
+        max-width:200px;
         text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
         -webkit-transition: all .2s;
         transition: all .2s;

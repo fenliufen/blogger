@@ -5,15 +5,16 @@
                 <h6><i class="iconfont">&#xe639;</i>所有链接</h6>
             </div>
 
-
             <div class="list-demo">
+
+                <div v-if="mydata==''" class="list_vav">暂无数据！</div>
+
                 <ul>
                     <li v-for="itme in mydata" :key="itme">
-                        <a :href="itme.path" target="view_window">{{itme.name}}</a>
+                        <a :href="itme.url" target="view_window">{{itme.friendship_name}}</a>
                     </li>
                 </ul>
             </div>
-
 
 
             <div class="yqts">
@@ -28,11 +29,12 @@
                 </div>
             </div>
 
+
             <div class="yqts">
                 <h6><i class="iconfont">&#xe657;</i>站点信息</h6>
                 <div class="apply-tip">
                     <p>更新频率：每周1-3篇原创文章</p>
-                    <p>博客名称：疯子博客</p>
+                    <p>博客名称：飞翔的蜗牛</p>
                     <p>github地址：https://github.com/fenliufen</p>
                     <p>博客服务器：阿里云ECS服务器 <a href="https://www.aliyun.com/?utm_content=se_1000301881" target="view_window">点击进入官网购买</a></p>
                     <p>博客介绍：文章分享，技术分享</p>
@@ -40,25 +42,27 @@
             </div>
 
             <div class="youlian">
+
                 <h6><i class="iconfont">&#xe657;</i>申请友链</h6>
 
                 <div class="apply-tip">
 
-                    <input type="text" placeholder="站点名称(必填)" v-model="formdata.name">
+                  <div class="liuyan_01">
 
-                    <input type="text" placeholder="个人邮箱(必填)" v-model="formdata.mailbox">
-
-                    <input type="text" placeholder="网站地址(必填)" v-model="formdata.path">
-
-                    <div class="list_show">
-                        <textarea class="test_02" placeholder="网站描述(必填)" v-model="formdata.miaosu" >
-                        </textarea>
+                    <div class="test_01">
+                      <input type="text" placeholder="网站名称(必填)"  v-model="name">
+                      <input type="text" placeholder="邮箱(必填)"  v-model="mailbox">
+                      <input type="text" placeholder="网址(必填)"  v-model="weburl">
                     </div>
 
-                    <button class="but" @click="add">点击提交申请</button>
+                    <div class="test_show">
+                      <textarea class="test_02" placeholder="写点什么..."  v-model="content"></textarea>
+                      <button class="but" v-on:click="add">提交</button>
+                    </div>
+
+                  </div>
+
                 </div>
-
-
 
             </div>
 
@@ -66,10 +70,11 @@
 
 
     </div>
+
+
 </template>
 
 <script>
-    import axios from 'axios'
     import qs from 'qs'
     export default {
         name: "index",
@@ -87,10 +92,10 @@
         data(){
             return{
                 mydata:[],
-                formdata:{
-                    name:'',
-                    mailbox:'',
-                    path:'',
+                form_data:{
+                    friendship_name:'',
+                    email:'',
+                    url:'',
                     miaosu:'',
                 },
                 ispan:false
@@ -102,11 +107,11 @@
                 var that=this;
 
                 var t  = /^[A-Za-zd0-9]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
-                if (that.formdata.name==''|| that.formdata.mailbox=='' || that.formdata.path=='' || that.miaosu==''){
+                if (that.formdata.friendship_name==''|| that.formdata.email=='' || that.formdata.url=='' || that.miaosu==''){
                     return alert('名称，地址，邮箱，描述为必填项')
                 }
 
-                if (!t.test(that.formdata.mailbox)){
+                if (!t.test(that.formdata.email)){
                     return alert('邮箱格式不正确')
                 }
 
@@ -121,10 +126,10 @@
 
                 });
 
-                that.formdata.name='';
-                that.formdata.path='';
-                that.formdata.mailbox='';
-                that.formdata.miaosu='';
+                that.form_data.friendship_name='';
+                that.form_data.url='';
+                that.form_data.email='';
+                that.form_data.miaosu='';
                 return alert('提交成功')
 
             }
@@ -172,6 +177,7 @@
     }
 
     .title-01 h6{
+        margin-top:20px ;
         display: block;
         padding-top: 60px;
         font-size: 16px;
@@ -180,6 +186,7 @@
         border-bottom: 1px solid #e6e6e6;
         padding-bottom: 1em;
 
+
     }
     .title-01 h6 i{
         padding-right: 4px;
@@ -187,7 +194,20 @@
 
     .list-demo{
         width: 100%;
-        height: 100%;
+        min-height: 200px;
+        /*border: 1px solid #e6e6e6;*/
+    }
+
+
+    .list_vav{
+      width: 100%;
+      display: block;
+      margin: auto;
+      text-align: center;
+      line-height:200px;
+      font-size: 28px;
+      font-weight: bold;
+      color: green;
     }
 
     .list-demo ul{
@@ -214,12 +234,14 @@
     }
 
     .yqts h6{
+        margin-top:20px ;
         display: block;
         font-size: 16px;
         text-indent: 1em;
         color: blue;
         border-bottom: 1px solid #e6e6e6;;
         padding-bottom: 1em;
+
 
     }
 
@@ -228,6 +250,7 @@
     }
 
     .apply-tip{
+        margin-top: 20px;
         line-height: 30px;
     }
 
@@ -242,81 +265,104 @@
 
    .apply-tip .ti_01{
         color: red;
-    }
-
-
-   .youlian{
-       /*max-width: 900px;*/
-       min-height: 500px;
    }
 
 
 
-   .youlian h6{
-       font-size: 16px;
-       text-indent: 1em;
-       color: blue;
-       border-bottom: 1px solid #e6e6e6;;
-       padding-bottom: 1em;
-
-   }
-
-   .youlian h6 i{
-       padding-right: 4px;
+   .youlian h6 {
+     margin-top:20px ;
+     display: block;
+     font-size: 16px;
+     text-indent: 1em;
+     color: blue;
+     border-bottom: 1px solid #e6e6e6;;
+     padding-bottom: 1em;
 
    }
 
 
 
 
-    .youlian input{
-        display: block;
-        border: 1px solid rgba(0,0,0, .1);
-        width: 300px;
-        min-height: 40px;
-        text-indent: 1em;
-        font-size: 15px;
-        margin-top: 1rem;
-        border-radius: 2px;
 
-    }
+    /*输入框区*/
 
-    .youlian input:focus{
-        border: 1px solid red;
-    }
-
-    .list_show .test_02{
-        display: block;
-        width: 300px;
-        border: 1px solid rgba(0,0,0, .1);
-        outline: none;
-        font-size: 15px;
-        text-indent: 1em;
-        height: 150px;
-        resize:none;
-        margin-top: 1rem;
-        font-family: inherit;
-        border-radius: 2px;
+    .liuyan_01{
+      width:100%;
+      min-height: 300px;
+      /*border: 1px dashed #ccc;*/
+      margin-top:30px ;
+      background: #fff;
 
 
     }
 
-    .list_show .test_02:focus{
-        border: 1px solid red;
+    .liuyan_01 .test_01{
+      display: flex;
+      margin:20px auto;
+      max-width: 730px;
+
     }
+
+    .liuyan_01 .test_01 input{
+      display:block;
+      border: 1px solid rgba(0,0,0, .1);
+      width:31.2%;
+      min-height: 40px;
+      margin-left: 10px;
+      text-indent: 1em;
+      font-size: 15px;
+      margin-right: 2px;
+
+    }
+
+    .liuyan_01 .test_01 input:focus{
+      border: 1px solid red;
+
+    }
+
+
+
+    .test_show{
+      max-width: 730px;
+      margin: 0 auto;
+      padding-right: 20px;
+    }
+
+
+
+    .test_02{
+      width: 100%;
+      min-height: 80px;
+      text-indent: 1em;
+      outline:none;
+      resize:none;
+      border: 1px solid rgba(0,0,0, .1);
+      color: inherit;
+      font-family: inherit;
+      font-size: 15px;
+      padding-top: 50px;
+      margin-left: 8px;
+      /*line-height: 20px;*/
+
+    }
+
+    .test_02:focus{
+      border: 1px solid red;
+    }
+
 
     .but{
-        display: block;
-        width: 100px;
-        height: 40px;
-        background-color: #1e9fff;
-        color: #fff;
-        border-radius: 2px;
-        text-transform: none;
-        margin-top:1rem;
-
-
+      display: block;
+      width: 100px;
+      height: 40px;
+      background-color: #1e9fff;
+      color: #fff;
+      border-radius: 2px;
+      text-transform: none;
+      margin-top: 20px;
+      float: right;
     }
+
 
 
 

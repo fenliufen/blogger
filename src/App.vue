@@ -15,10 +15,8 @@
                 <img id="img" src="./assets/imgs/Top.jpg" />
             </div>
         </div>
-
         <yqts>
 		</yqts>
-
     </div>
 
 </template>

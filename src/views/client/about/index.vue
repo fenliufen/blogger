@@ -40,9 +40,9 @@
                         <p>
                             <a class="username">
                                 <i class="iconfont">&#xe689;</i>
-                                {{itme.name}}
+                                {{itme.user_name}}
                             </a>
-                            <span class="time">{{itme.time}}</span>
+                            <span class="time">{{itme.comment_date}}</span>
                         </p>
 
                         <div class="content-show">
@@ -58,19 +58,19 @@
         <div class="about_02">
             <div class="about_03">
                 <img src="../../../assets/imgs/6.jpg">
-                <h1>从小就疯了</h1>
+                <h1>飞翔的蜗牛</h1>
                 <div class="lx">
 
                     <span>邮箱</span>
                     <p>1607187254@qq.com</p>
                     <span>博客</span>
-                    <p>http://112.74.38.68:8080/</p>
+                    <p>http://112.74.38.68:81</p>
 
                 </div>
                 <div class="desc">
                     <p>一个90后青年站长！测试工程师、Web前端工程师。</p>
                     <p>欢迎您，来到我的个人博客，你，我生命中一个重要的过客，我们之所以是过客，因为你未曾会为我停留。</p>
-                    <p>我不太知道这个博客最终会变成什么样。我只是想找一个地方，记录自己学习的痕迹。分享心得
+                    <p>我不太知道这个博客最终会变成什么样。这是我的第一个博客网站，我只是想找一个地方，记录自己学习的痕迹。分享心得
                         希望这个博客越写越好~
                     </p>
                 </div>
@@ -117,8 +117,8 @@
 
                 that.$axios.post('/message/liuyan',
                     qs.stringify({
-                        'name': that.name,
-                        'mailbox': that.mailbox,
+                        'user_name': that.name,
+                        'email': that.mailbox,
                         'weburl': that.weburl,
                         'content': that.content
                     })
@@ -248,7 +248,7 @@
     .liuyan_01 .test_01 input{
         display:block;
         border: 1px solid rgba(0,0,0, .1);
-        width: 34%;
+        width:31.2%;
         min-height: 40px;
         margin-left: 10px;
         text-indent: 1em;
@@ -281,9 +281,10 @@
         border: 1px solid rgba(0,0,0, .1);
         color: inherit;
         font-family: inherit;
-        font-size: inherit;
+        font-size: 15px;
         padding-top: 50px;
         margin-left: 8px;
+        /*line-height: 10px;*/
 
     }
 

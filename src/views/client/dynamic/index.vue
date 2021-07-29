@@ -9,12 +9,12 @@
                         <li v-for="itme in mydata" :key="itme">
                                 <div>
                                         <span class="time">
-                                                {{itme.time}}
+                                                {{itme.create_time}}
                                                 <i ></i>
                                         </span>
 
                                         <i class="logo">
-                                                <a>{{itme.content}}</a>
+                                                <a>{{itme.dynamic_content}}</a>
                                                 <span></span>
                                         </i>
                                 </div>

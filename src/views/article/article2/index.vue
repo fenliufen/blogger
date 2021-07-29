@@ -2,19 +2,13 @@
     <div class="demo1">
 
         <div class="titer-01">
-            <h4>常见的黑盒测试方法</h4>
+            <h4>{{this.article_data.title}}</h4>
             <p>
-                <span>作者：从小就疯了</span>
-                <span>观看群众：40</span>
-                <span>分类：网站测试</span>
-                <span>更新时间：2020年05月22日</span>
+                <span>作者:{{this.article_data.author}}</span>
+                <span>观看群众：{{this.article_data.post_sum}}</span>
+                <span>分类：{{this.article_data.copyfrom}}</span>
+                <span>更新时间：{{this.article_data.update_time}}</span>
             </p>
-
-<!--            <div class="tome">-->
-<!--                <span>22</span>-->
-<!--                <span>05</span>-->
-<!--                <span>2020</span>-->
-<!--            </div>-->
 
         </div>
 
@@ -217,7 +211,7 @@
 
             </div>
 
-            <message></message>
+            <message :article_data="this.article_data"></message>
 
         </div>
 
@@ -227,8 +221,37 @@
 
 <script>
     import message from "../../../components/message";
+    import qs from 'qs'
     export default {
         name: "index",
+        created() {
+            this.article()
+        },
+
+
+        methods:{
+           article(){
+               var _this=this;
+               _this.$axios.get("/meswzpl/liuyan?url='"+window.location.pathname+"'")
+               .then(function (res) {
+                   console.log(res.data[0]);
+                   _this.article_data=res.data[0]
+               }).catch(function (err) {
+                   console.log(err)
+               })
+           }
+
+
+        },
+
+
+        data(){
+
+            return{
+                article_data:{}
+            }
+        },
+
         components: {
             message
         },

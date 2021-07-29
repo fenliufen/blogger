@@ -4,22 +4,25 @@
             <div class="tixi" v-if=" filtrate=='' ">暂无数据！</div>
             <ul class="list">
                 <li v-for="itme in filtrate" :key="itme">
+
+
+
                     <div class="content-1">
 
                         <h5 class="list-title">
-                            <span>【{{itme.creation}}】</span>
-                            <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">{{itme.title}}</a>
+                            <span>【{{itme.design=="0"? "原创":"转载"}}】</span>
+                            <a :href="itme.url" :target="itme.design=='0'?'':'view_window'">{{itme.title}}</a>
                         </h5>
 
                         <div class="tome">
-                            <span class="ri">{{itme.time.slice(8,10)}}</span>
-                            <span class="yue">{{itme.time.slice(5,7)}}</span>
-                            <span class="nian">{{itme.time.slice(0,4)}}</span>
+                            <span class="ri">{{itme.create_time.slice(8,10)}}</span>
+                            <span class="yue">{{itme.create_time.slice(5,7)}}</span>
+                            <span class="nian">{{itme.create_time.slice(0,4)}}</span>
                         </div>
 
                         <div class="content">
-                            <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">
-                                <img :src="itme.img_path">
+                            <a :href="itme.url" :target="itme.design=='0'?'':'view_window'">
+                                <img :src="itme.image_url">
                             </a>
                             <span>
                             {{itme.content}}
@@ -28,10 +31,10 @@
 
                         <div class="read-more">
                             <div></div>
-                            <a :href="itme.path" :target="itme.creation=='转载'?'creation':''">立即阅读</a>
+                            <a :href="itme.url" :target="itme.design=='0'?'':'view_window'">立即阅读</a>
                         </div>
                         <div class="yeqian">
-                            <a class="iconfont1"><i class="iconfont">&#xe639;</i>{{itme.classify}}</a>
+                            <a class="iconfont1"><i class="iconfont">&#xe639;</i>{{itme.copyfrom}}</a>
                             <a class="iconfont1"><i class="iconfont"></i></a>
                         </div>
                     </div>
@@ -69,8 +72,8 @@
                         <h5>热门文章</h5>
                         <div>
                             <ul>
-                                <li v-for="(itme,index) in hot" :key="(itme,ndex)">
-                                    <a :href="itme.path" :target="itme.creation=='转载'?'creation':''"><span>{{index+1}}. </span>{{itme.title}}</a>
+                                <li v-for="(itme,index) in hot" :key="(itme,index)">
+                                    <a :href="itme.url" :target="itme.design=='1'?'creation':''"><span>{{index+1}}. </span>{{itme.title}}</a>
                                 </li>
 
                             </ul>
@@ -92,11 +95,11 @@
         name: "index",
         created() {
             var that=this;
-
-            that.$axios.get('/journal/article')
+            axios.get('/journal/article')
                 .then(function (res) {
                     that.mydata=res.data;
-                    that.filtrate=that.mydata.content
+                    that.filtrate=that.mydata.content;
+                    console.log(that.filtrate);
 
                 })
                 .catch(function (err) {
@@ -105,7 +108,7 @@
                 });
 
 
-            that.$axios.get('/journal/article/hot')
+            axios.get('/journal/article/hot')
                 .then(function (res) {
                     that.hot=res.data.content;
 
@@ -125,7 +128,7 @@
                 // }
 
                 this.filtrate = this.mydata.content.filter(function(item) {
-                    return item.title.includes((_this.shou).trim()) || item.classify.includes((_this.shou).trim());
+                    return item.title.includes((_this.shou).trim()) || item.copyfrom.includes((_this.shou).trim());
                 });
 
                 // this.shou = '';
@@ -142,7 +145,7 @@
                 if (index==1){
 
                     this.mydata.content.forEach(function(itme) {
-                        if (itme.classify === '网站测试') {
+                        if (itme.copyfrom === '网站测试') {
                             arr.push(itme);
                         }
                     });
@@ -151,7 +154,7 @@
 
                 if (index==2){
                     this.mydata.content.forEach(function(itme) {
-                        if (itme.classify === '网站开发') {
+                        if (itme.copyfrom === '网站开发') {
                             arr.push(itme);
                         }
                     });
@@ -161,7 +164,7 @@
 
                 if (index==3){
                     this.mydata.content.forEach(function(itme) {
-                        if (itme.classify === '操作系统') {
+                        if (itme.copyfrom === '操作系统') {
                             arr.push(itme);
                         }
                     });
@@ -171,7 +174,7 @@
 
                 if (index==4){
                     this.mydata.content.forEach(function(itme) {
-                        if (itme.classify === '深度学习') {
+                        if (itme.copyfrom === '深度学习') {
                             arr.push(itme);
                         }
                     });
@@ -179,7 +182,7 @@
                 }
                 if (index==5){
                     this.mydata.content.forEach(function(itme) {
-                        if (itme.classify === '程序算法') {
+                        if (itme.copyfrom === '程序算法') {
                             arr.push(itme);
                         }
                     });
@@ -189,7 +192,7 @@
 
                 if (index==6){
                     this.mydata.content.forEach(function(itme) {
-                        if (itme.classify === '其他') {
+                        if (itme.copyfrom === '其他') {
                             arr.push(itme);
                         }
                     });
@@ -259,6 +262,9 @@
         scrollbar-width: none;
         padding-top:90px ;
     }
+
+
+
     /*内容展示css样式*/
     .zhanshi {
         max-width: 960px;
@@ -424,7 +430,7 @@
     }
     @media all and (max-height:1200px) {
         .doahang1 {
-            position: fixed;
+
         }
     }
     .doahang-tlter {

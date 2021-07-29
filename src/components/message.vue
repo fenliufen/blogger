@@ -2,8 +2,8 @@
     <div class="mes_sage">
         <div class="liuyan_01">
             <div class="test_01">
-                <input type="text" placeholder="昵称(必填)"  v-model="msgdata.name">
-                <input type="text" placeholder="邮箱(必填)"  v-model="msgdata.mailbox">
+                <input type="text" placeholder="昵称(必填)"  v-model="msgdata.user_name">
+                <input type="text" placeholder="邮箱(必填)"  v-model="msgdata.email">
                 <input type="text" placeholder="网址(选填)"  v-model="msgdata.weburl">
             </div>
 
@@ -26,9 +26,9 @@
                     <p>
                         <a class="username">
                             <i class="iconfont">&#xe689;</i>
-                            {{itme.name}}
+                            {{itme.user_name}}
                         </a>
-                        <span class="time">{{itme.time}}</span>
+                        <span class="time">{{itme.comment_date}}</span>
                     </p>
 
                     <div class="content-show">
@@ -47,7 +47,6 @@
     export default {
         name: "index",
         created() {
-
             this.message()
 
         },
@@ -58,13 +57,12 @@
             add:function () {
                 var t  = /^[A-Za-zd0-9]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
                 var that=this;
-
-                if (that.msgdata.name==''||that.msgdata.mailbox==''||that.msgdata.content==''){
+                if (that.msgdata.uesr_name==''||that.msgdata.email==''||that.msgdata.content==''){
                     return  alert('昵称，邮箱，留言不能为空')
                 }
 
 
-                if (!t.test(that.msgdata.mailbox)){
+                if (!t.test(that.msgdata.email)){
                     return alert('邮箱格式不正确')
                 }
 
@@ -83,55 +81,29 @@
                     });
 
 
-                this.msgdata.content='';
+
+                that.msgdata.content='';
 
 
             },
 
             message:function () {
 
-                //每次进来页面的时候初始化留言
-                var thah=this;
-                thah.$axios.post('/meswzpl/howliuyan',qs.stringify({
-                    'path':window.location.pathname
-                })).then(function (res) {
-                    thah.mydata=res.data.content;
-                    // thah.msgdata.relevance = res.data[1].relevance
-
-
-
-                }).catch(function (err) {
-                    console.log(err);
-                });
-
-
-                //每次进来的时候查询下关联的字段id
-                thah.$axios.post('/meswzpl/howliuyan/id',qs.stringify({
-                    'path':window.location.pathname
-                })).then(function (res) {
-                    thah.msgdata.relevance = res.data[0].relevance
-
-
-
-                }).catch(function (err) {
-                    console.log(err);
-                });
-
             }
 
         },
 
+        props: ['article_data'],
 
         data(){
             return{
                 mydata:[],
                 msgdata:{
-                    name:'',
-                    mailbox:'',
+                    user_name:'',
+                    email:'',
                     weburl:'',
+                    article_id:"",
                     content:'',
-                    path:window.location.pathname,
-                    relevance:'',
                 },
 
             }
@@ -219,7 +191,7 @@
         border: 1px solid #cccccc;
         color: inherit;
         font-family: inherit;
-        font-size: inherit;
+        font-size: 15px;
         padding-top: 50px;
         margin-left: 8px;
 
